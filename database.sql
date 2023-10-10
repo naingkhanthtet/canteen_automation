@@ -16,7 +16,7 @@ create table Users (
     passwd varchar(15) unique not null,
     phone varchar(11) unique not null,
     batch INT not null,
-    urole ENUM('Client', 'Admin')  
+    urole ENUM('Client', 'Admin') not null  
 );
 
 create table Menus (
@@ -24,7 +24,7 @@ create table Menus (
     mname varchar(255) unique not null,
     quantity INT not null,
     price INT not null,
-    mrole ENUM('Curry', 'Drink', 'Fries', 'Salad', 'Fast', 'Soup')
+    mrole ENUM('Curry', 'Drink', 'Fries', 'Salad', 'Fast', 'Soup') not null
 );
 
 insert into Users(email, passwd, phone, batch, urole) values ('naing@gmail.com', 'Naing15!', '09123456789', 10, 'Client');
@@ -35,5 +35,7 @@ create table Orders (
     odate DATETIME not null, 
     mid INT not null,
     quantity INT not null,
-    price INT not null
+    price INT not null,
+    FOREIGN KEY (uid) REFERENCES Users(uid),
+    FOREIGN KEY (mid) REFERENCES Menus(mid)
 )
