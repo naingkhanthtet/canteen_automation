@@ -15,6 +15,8 @@ var db = mysql.createConnection({
 
 const publicDir = path.join(__dirname, './public');
 app.use(express.static(publicDir));
+app.use(express.urlencoded({ extended:false }));
+app.use(express.json());
 
 // https://www.npmjs.com/package/hbs
 app.set('view engine', 'html');
@@ -26,13 +28,8 @@ db.connect(function(err) {
     else console.log('Mysql connected');
 })
 
-app.get('/', (req, res) => {
-    res.render("index_test");
-});
-
-app.get('/register', (req, res) => {
-    res.render("register_test");
-});
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
 app.listen(8000, () => {
     console.log('Server started on port 8000');
