@@ -13,7 +13,7 @@ var db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
-const publicDir = path.join(__dirname, './style');
+const publicDir = path.join(__dirname, './public');
 app.use(express.static(publicDir));
 
 // https://www.npmjs.com/package/hbs
@@ -27,7 +27,6 @@ db.connect(function(err) {
 })
 
 app.get('/', (req, res) => {
-    // res.send('<h1>MML LITE</h1>');
     res.render("index_test");
 });
 
