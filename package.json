@@ -4,7 +4,8 @@
   "description": "a web project by 3 Edinburgh Napier students. Intended for food ordering from Canteen.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",

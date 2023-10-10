@@ -27,7 +27,10 @@ create table Menus (
     mrole ENUM('Curry', 'Drink', 'Fries', 'Salad', 'Fast', 'Soup') not null
 );
 
-insert into Users(email, passwd, phone, batch, urole) values ('naing@gmail.com', 'Naing15!', '09123456789', 10, 'Client');
+insert into Users(email, passwd, phone, batch, urole) values 
+    ('naing@gmail.com', 'Naing%!', '09123456789', 10, 'Admin'),
+     ('may@email.com', 'May%!', '09234567890', 10, 'Client'),
+    ('ye@email.com', 'Ye%!', '09345678901', 10, 'Client');
 
 create table Orders (
     oid INT AUTO_INCREMENT primary key,
