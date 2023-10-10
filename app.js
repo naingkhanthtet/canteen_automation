@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql = require('mysql');
+var path = require('path');
 const app = express();
 const dotenv = require('dotenv');
 
@@ -10,7 +11,15 @@ var db = mysql.createConnection({
     user: process.env.DATABASE_USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE
-})
+});
+
+const publicDir = path.join(__dirname, './public');
+app.use(express.static(publicDir));
+
+// https://www.npmjs.com/package/hbs
+app.set('view engine', 'html');
+app.engine('html', require('hbs').__express);
+
 
 db.connect(function(err) {
     if (err) throw err;
@@ -18,7 +27,8 @@ db.connect(function(err) {
 })
 
 app.get('/', (req, res) => {
-    res.send('<h1>MML LITE</h1>');
+    // res.send('<h1>MML LITE</h1>');
+    res.render("index")
 });
 
 app.listen(8000, () => {
