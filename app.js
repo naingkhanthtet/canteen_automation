@@ -21,7 +21,9 @@ db.connect(function(err) {
 });
 
 // app.use(cookieParser());
+app.use(cookieParser());
 app.use(express.urlencoded( {extended:false }));
+
 
 const location = path.join(__dirname, './public');
 app.use(express.static(location));
