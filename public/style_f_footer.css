@@ -1,0 +1,49 @@
+  /* body {
+    font-family: 'Pattaya', sans-serif;
+  } */
+
+/* Larger than mobile */
+@media (min-width: 600px) {
+    header, footer {
+      font-size: 16px;
+    }
+  }
+  
+  /* Larger than tablet, less than desktop */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    main {
+      padding: 1.5em;
+    }
+  }
+  
+  /* Larger than desktop */
+  @media (min-width: 1024px) {
+    main {
+      padding: 2em;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .col {
+      text-align: center;
+    }
+  }
+
+  .footer {
+      background-color: #E38B29;
+      margin-left: 0;
+      margin-right: 0;
+  }
+
+  a {
+      color: black;
+  }
+
+  a:hover {
+      color: aliceblue;
+  }
+
+  i:hover {
+    text-shadow: 0 2px #8a8a8a;
+    font-size: 25px;
+  }
