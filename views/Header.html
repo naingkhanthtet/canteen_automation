@@ -65,8 +65,8 @@
                     Account
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Login</a></li>
-                    <li><a class="dropdown-item" href="#">Register</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#RegisterModal">Register</a></li>
                 </ul>
             </li>
         </ul>
@@ -74,6 +74,93 @@
 
 </nav>
 
+<!--Moral Login Here-->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: rgb(255, 216, 169); width: 450px; height: 400px">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn-close btn btn-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="for_header justify-content-center d-flex align-content-center mt-4">
+        <h5 class="modal-title text-center fs-4" id="loginModalLabel1">Login Account</h5>
+      </div>
+      <div class="for_body m-3">
+        <!-- Your login form goes here -->
+        <form class="m-4 rounded-circle">
+          <div class="mb-4" style="color: grey">
+            <input type="email" class="form-control rounded-5 shadow" id="email_login" placeholder="Enter your Email Address" style="background-color: rgb(241, 166, 97);">
+          </div>
+          <div class="" style="color: grey">
+            <input type="password" class="form-control rounded-5 shadow" id="Password_login" placeholder="Enter Your Password" style="background-color: rgb(241, 166, 97);">
+          </div>
+          <div class="lable_account text-center m-3">
+            <span class="">Do not have an account?</span>
+            <a href="Register.html" class="text-danger">Register</a>
+          </div>
+        </form>
+      </div>
+      <div class="footer justify-content-center d-flex align-content-center mb-4">
+        <div style="margin-right: 30px;">
+          <button type="button" class="button_ho shadow rounded-5" data-bs-dismiss="modal" style="background-color: rgb(241, 166, 97); width: 120px; height: 40px; border: 1px solid white">Cancel</button>
+        </div>
+        <div style="margin-left: 30px;">
+          <button type="button" class="button_ho shadow rounded-5" style="background-color: rgb(241, 166, 97); width: 120px; height: 40px; border: 1px solid white">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Moral Login End-->
+
+<!--Moral Register Start-->
+<div class="modal fade " id="RegisterModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" style="background-color: rgb(255, 216, 169); width:500px; height:500px">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="button" class="btn-close btn btn-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="for_header justify-content-center d-flex align-content-center mt-4">
+              <h5 class="modal-title text-center fs-4" id="loginModalLabel">Register Account</h5>
+          </div>
+          <div class="for_body m-4">
+              <!-- Your register form goes here -->
+              <form class="m-4 rounded-circle">
+                  <div class="justify-content-center d-flex align-content-center">
+                      <div class="mb-3" style="color: grey ;margin-right: 5px;" >
+                          <input type="email" class="form-control rounded-5 shadow" id="floatingInput" placeholder="Enter Your Name" style="background-color: rgb(241, 166, 97);">
+                        </div>
+                        <div class="" style="color: grey ; margin-left: 5px; ">
+                          <input type="text" class="form-control rounded-5 shadow" id="batch" placeholder="Enter Batch Number" style="background-color: rgb(241, 166, 97);">
+                        </div>
+                  </div>
+
+                    <div class="mb-3" style="color: grey">
+                      <input type="password" class="form-control rounded-5 shadow" id="Password" placeholder="Enter Your Password" style="background-color: rgb(241, 166, 97);">
+                    </div>
+
+                    <div class="mb-3" style="color: grey">
+                      <input type="password" class="form-control rounded-5 shadow" id="confirmPassword" placeholder="Enter Your Confirm Password" style="background-color: rgb(241, 166, 97);">
+                    </div>
+
+                    <div class="justify-content-center d-flex align-content-center">
+                      <div class="" style="color: grey ; margin-right: 5px;">
+                          <input type="email" class="form-control rounded-5 shadow" id="email" placeholder="Enter Your Email" style="background-color: rgb(241, 166, 97);">
+                        </div>
+                        <div class="" style="color: grey; margin-left: 5px;">
+                          <input type="phone" class="form-control rounded-5 shadow" id="floatingPassword" placeholder="Enter Your Phone Number" style="background-color: rgb(241, 166, 97);">
+                        </div>
+                    </div>
+
+              </form>
+          </div>
+          <div class="footer justify-content-center d-flex align-content-center mb-4" >
+              <div style="margin-right: 30px; "><button type="button" class="button_ho shadow rounded-5" data-bs-dismiss="modal" style="background-color:  rgb(241, 166, 97); width:120px; height:40px; border:1px solid white">Cancel</button></div>
+               <div style="margin-left: 30px; "><button type="button" class="button_ho shadow rounded-5" style="background-color: rgb(241, 166, 97); width:120px; height:40px ; border:1px solid white">Login</button></div>
+           </div> 
+      </div>
+  </div>
+</div>
+<!--Moral Register End-->
 
 </body>
 </html>  
