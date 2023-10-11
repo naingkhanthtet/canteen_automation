@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/style_test.css">
+    <title>Document</title>
+</head>
+<body>
+
+{{> header_test }}
+<h1>Login</h1>
+{{#if msg}}
+    <p>{{msg}}</p>
+{{/if}}
+<form action="/auth/login" method="post">
+    <input type="email" name="email" id="email" placeholder="email">
+    <input type="password" name="password" id="password" placeholder="password">
+    <button type="submit">Login</button>
+    <br>
+    <a href="/register">Or create account</a>
+</form>
+
+</body>
+</html>
