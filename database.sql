@@ -12,11 +12,12 @@ use canteen;
 
 create table Users (
     uid INT AUTO_INCREMENT primary key,
+    username varchar(20) unique not null,
     email varchar(50) unique not null,
-    passwd varchar(15) unique not null,
+    passwd varchar(255) unique not null,
     phone varchar(11) unique not null,
     batch INT not null,
-    urole ENUM('Client', 'Admin') not null  
+    urole ENUM('Client', 'Admin') default 'Client' not null
 );
 
 create table Menus (
@@ -27,10 +28,10 @@ create table Menus (
     mrole ENUM('Curry', 'Drink', 'Fries', 'Salad', 'Fast', 'Soup') not null
 );
 
-insert into Users(email, passwd, phone, batch, urole) values 
-    ('naing@gmail.com', 'Naing%!', '09123456789', 10, 'Admin'),
-     ('may@email.com', 'May%!', '09234567890', 10, 'Client'),
-    ('ye@email.com', 'Ye%!', '09345678901', 10, 'Client');
+insert into Users(username, email, passwd, phone, batch) values
+    ('naing', 'naing@gmail.com', 'Naing%!', '09123456789', 10),
+    ('may','may@email.com', 'May%!', '09234567890', 10),
+    ('ye','ye@email.com', 'Ye%!', '09345678901', 10);
 
 create table Orders (
     oid INT AUTO_INCREMENT primary key,

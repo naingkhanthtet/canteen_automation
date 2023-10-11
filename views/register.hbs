@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/style_test.css">
+</head>
+<body>
+{{>header_test}}
+<h1>Register</h1>
+
+{{#if msg}}
+    <p>{{msg}}</p>
+{{/if}}
+<form id="registration-form" action="/auth/register" method="post">
+    <input type="text" name="username" id="username" placeholder="username">
+    <input type="email" name="email" placeholder="email" id="email">
+    <input type="text" name="phone" id="phone" placeholder="phone">
+    <input type="number" name="batch" id="batch" placeholder="batch num">
+    <input type="password" name="password" placeholder="password" id="password">
+    <input type="password" name="confirm_password" id="confirm_password" placeholder="same password again">
+    <button type="submit">Register</button>
+    <br>
+</form>
+
+<a href="/">Login if already registered</a>
+
+</body>
+</html>
