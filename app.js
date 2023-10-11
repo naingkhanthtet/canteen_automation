@@ -1,12 +1,14 @@
 const express = require('express');
 const mysql = require('mysql');
 const path = require('path');
-const app = express();
 const bcrypt = require('bcrypt');
-const async = require('hbs/lib/async');
-const { log } = require('console');
+const hbs = require('hbs');
+const cookieParser = require('cookie-parser');
 
 require('dotenv').config({ path: './.env'})
+
+
+const app = express();
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -21,13 +23,20 @@ app.use(express.static(publicDir));
 app.use(express.urlencoded({ extended:false }));
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.render('index_test');
+})
+
+app.get('/createUser', (req, res) => {
+    res.sendFile(__dirname + '/views/register_test.html');
+})
+
 app.post('/createUser', async (req, res) => {
     const { email, passwd, phone, batch, urole } = req.body;
     const hashedPassword = await bcrypt.hash(passwd, 10);
 
     db.getConnection(async (err, connection) => {
         if (err) throw err;
-
         const sqlSearch = "select * from Users WHERE email = ?";
         const search_query = mysql.format(sqlSearch,[email]);
 
@@ -62,6 +71,34 @@ app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 */
 
+app.post('/login', (req, res) => {
+    const { email, passwd, phone, batch, urole } = req.body;
+    db.getConnection (async (err, connection) => {
+        if (err) throw err;
+        const sqlSearch = 'select * from Users where email = ?'
+        const search_query = mysql.format(sqlSearch, [email]);
+
+        await connection.query (search_query, async (err, result) => {
+            connection.release();
+
+            if (err) throw err;
+            if (result.length == 0) {
+                console.log("-----> User does not exist");
+                res.sendStatus(404);
+            } else {
+                const hashedPassword = result[0].passwd;
+                if (await bcrypt.compare(passwd, hashedPassword)) {
+                    console.log("-----> login success");
+                    res.send(`${email} is logged in`);
+                } else {
+                    console.log('incorrect password');
+                    res.send('incorrect password')
+                }
+            }
+        });
+    });
+});
+
 db.connect(function(err) {
     if (err) throw err;
     else console.log('Mysql connected');
@@ -73,4 +110,5 @@ app.use('/auth', require('./routes/auth'));
 const port = process.env.PORT;
 app.listen(port, () => {
     console.log(`Server started on port ${port}...`);
+    console.log(`http://localhost:${port}`);
 });
