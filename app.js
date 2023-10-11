@@ -6,31 +6,40 @@ const hbs = require('hbs');
 const cookieParser = require('cookie-parser');
 
 require('dotenv').config({ path: './.env'})
-
-
 const app = express();
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-    port: process.env.DB_PORT
+    database: process.env.DATABASE
 });
 
-const publicDir = path.join(__dirname, './public');
-app.use(express.static(publicDir));
-app.use(express.urlencoded({ extended:false }));
-app.use(express.json());
+db.connect(function(err) {
+    if (err) throw err;
+    else console.log('Mysql connected');
+});
 
-app.get('/', (req, res) => {
-    res.render('index_test');
-})
+// app.use(cookieParser());
+app.use(express.urlencoded( {extended:false }));
 
-app.get('/createUser', (req, res) => {
-    res.sendFile(__dirname + '/views/register_test.html');
-})
+const location = path.join(__dirname, './public');
+app.use(express.static(location));
+app.set('view engine', 'hbs');
 
+const partialsPath = path.join(__dirname, './views/partials');
+hbs.registerPartials(partialsPath);
+
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
+
+const port = process.env.PORT;
+app.listen(port, () => {
+    console.log(`Server started on port ${port}...`);
+    console.log(`http://localhost:${port}`);
+});
+
+/*
 app.post('/createUser', async (req, res) => {
     const { email, passwd, phone, batch, urole } = req.body;
     const hashedPassword = await bcrypt.hash(passwd, 10);
@@ -65,11 +74,11 @@ app.post('/createUser', async (req, res) => {
         });
     });
 });
-/*
+
 // https://www.npmjs.com/package/hbs
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
-*/
+
 
 app.post('/login', (req, res) => {
     const { email, passwd, phone, batch, urole } = req.body;
@@ -98,17 +107,4 @@ app.post('/login', (req, res) => {
         });
     });
 });
-
-db.connect(function(err) {
-    if (err) throw err;
-    else console.log('Mysql connected');
-})
-
-app.use('/', require('./routes/pages'));
-app.use('/auth', require('./routes/auth'));
-
-const port = process.env.PORT;
-app.listen(port, () => {
-    console.log(`Server started on port ${port}...`);
-    console.log(`http://localhost:${port}`);
-});
+*/
