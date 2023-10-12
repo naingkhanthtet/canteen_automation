@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {promisify} = require('util');
+const { promisify } = require('util');
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
                     // FIX HERE!!!!!!!!!!!!!!!!!!!!
                     // FIX HERE!!!!!!!!!!!!!!!!!!!!
                     // FIX HERE!!!!!!!!!!!!!!!!!!!!
-                    const id = result[0].id;
+                    const id = result[0].uid;
                     const token = jwt.sign({id: id}, process.env.JWT_SECRET, {
                         expiresIn: process.env.JWT_EXPIRES_IN,
                     });
@@ -88,22 +88,20 @@ exports.register = (req, res) => {
 exports.isLoggedIn = async (req, res, next) => {
     console.log(req.cookies);
     if (req.cookies.joes) {
-        try {
-            const decode = await promisify(jwt.verify)(
-                req.cookies.joes, process.env.JWT_SECRET
-            );
-            console.log(decode);
-            db.query("select * from Users where id=?", [decode.id], (err, results) => {
-                if (!results) {
+        const decode = await promisify(jwt.verify)(
+            req.cookies.joes,
+            process.env.JWT_SECRET
+        );
+
+        db.query ("select * from users where uid=?",
+            [decode.id],
+            (err, result) => {
+                if (!result) {
                     return next();
                 }
-                req.user = results[0];
+                req.user = result[0];
                 return next();
             });
-        } catch (err) {
-            console.log(err);
-            return next();
-        }
     } else {
         next();
     }

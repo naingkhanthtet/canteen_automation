@@ -29,7 +29,7 @@ const location = path.join(__dirname, './public');
 app.use(express.static(location));
 app.set('view engine', 'hbs');
 
-const partialsPath = path.join(__dirname, './views/partials');
+const partialsPath = path.join(__dirname, './views/partials/');
 hbs.registerPartials(partialsPath);
 
 app.use('/', require('./routes/pages'));
