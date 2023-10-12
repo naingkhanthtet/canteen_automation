@@ -1,16 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/users');
+const index = require('../controllers/index');
 
-router.get(['/', '/login'], function (req, res) {
-    res.render('login');
-})
+router.get(['/', '/login'], index.loginPage);
 
-router.get('/register', (req, res) => {
-    res.render('register');
-})
+router.get('/register', index.registerPage)
 
-router.get('/home', userController.isLoggedIn, (req, res) => {
+router.get('/home', index.isLoggedIn, (req, res) => {
     if (req.user) {
         res.render('home', {user: req.user});
     } else {

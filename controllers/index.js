@@ -10,6 +10,14 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
+exports.loginPage = (req, res) => {
+    res.render('login');
+}
+
+exports.registerPage = (req, res) => {
+    res.render('register');
+}
+
 exports.login = async (req, res) => {
     try {
         const {email, password} = req.body;
@@ -36,7 +44,7 @@ exports.login = async (req, res) => {
                     const token = jwt.sign({id: id}, process.env.JWT_SECRET, {
                         expiresIn: process.env.JWT_EXPIRES_IN,
                     });
-                    console.log('token is ' + token);
+                    // console.log('token is ' + token);
                     const cookieOptions = {
                         expires:
                             new Date(
@@ -78,7 +86,7 @@ exports.register = (req, res) => {
             if (err) {
                 throw err;
             } else {
-                console.log(result);
+                // console.log(result);
                 return res.render('register', {msg: "user registration success"});
             }
         })
@@ -86,7 +94,6 @@ exports.register = (req, res) => {
 };
 
 exports.isLoggedIn = async (req, res, next) => {
-    console.log(req.cookies);
     if (req.cookies.joes) {
         const decode = await promisify(jwt.verify)(
             req.cookies.joes,
