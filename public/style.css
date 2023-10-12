@@ -6,27 +6,21 @@
     
 }
 
-
 /* for special items */
-.no-padding-col {
-    padding-left: 1%;
-    padding-right: 0;
-    padding-top: 1%;
-    padding-bottom: 1%;
-}
-
 img {
     padding: 0;
+
 }
 
 /* for slide show css */
+
+.card{
+    border-color: 1px solid #E38B29;
+}
 
 .btn {
     background-color: #E38B29;
     width: 100%;
 }
 
-.btn:hover {
-   background-color: #FFD8A9;
 
-}
