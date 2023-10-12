@@ -24,16 +24,13 @@ db.connect(function(err) {
 app.use(cookieParser());
 app.use(express.urlencoded( {extended:false }));
 
+app.set('view engine', 'hbs');
 
 const location = path.join(__dirname, './public');
 app.use(express.static(location));
-app.set('view engine', 'hbs');
 
 const partialsPath = path.join(__dirname, './views/partials/');
 hbs.registerPartials(partialsPath);
-
-const imgPath = path.join(__dirname, './public/images/');
-hbs.registerPartials(imgPath);
 
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));

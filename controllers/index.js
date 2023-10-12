@@ -12,11 +12,11 @@ const db = mysql.createConnection({
 
 exports.loginPage = (req, res) => {
     res.render('login');
-}
+};
 
 exports.registerPage = (req, res) => {
     res.render('register');
-}
+};
 
 exports.login = async (req, res) => {
     try {
@@ -26,7 +26,7 @@ exports.login = async (req, res) => {
         }
 
         db.query('select * from users where email=?', [email], async (err, result) => {
-            console.log(result);
+            // console.log(result);
             if (result.length <= 0) {
                 return res.status(401).render('login', {
                     msg: 'email or password incorrect'
@@ -59,7 +59,7 @@ exports.login = async (req, res) => {
     } catch (err) {
         console.log(err);
     }
-}
+};
 
 // register
 exports.register = (req, res) => {
@@ -112,4 +112,12 @@ exports.isLoggedIn = async (req, res, next) => {
     } else {
         next();
     }
-}
+};
+
+exports.logout = async (req, res) => {
+    res.cookie('joes', 'logout', {
+        expires: new Date(Date.now() + 2 * 1000),
+        httpOnly: true,
+    });
+    res.status(200).redirect('/');
+};
