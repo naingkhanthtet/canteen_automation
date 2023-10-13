@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+    <!-- Bootstrupt CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>    
+    <!-- for CSS -->
+    <link rel="stylesheet" href="../css files/menu.css">
+
+    <!-- icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+    <!-- for link JavaScript -->
+    <script src="../js files/menu.js" defer></script>
+
+    <title>Food Menu</title>
+</head> 
+
+<!-- for header -->
+<div id="header_nav"></div>
+
+<!-- body -->
+<body style="background-color: rgb(253, 238, 220);">
+
+    <!-- for menu categories -->
+    <div class="container">
+        <div class="container-fluid mt-5 mb-5 justify-content-center align-content-center rounded-5 shadow" style="background-color: rgb(255, 255, 255); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
+            <div class="row m-5" style="border-bottom: 2px solid rgb(241, 166, 97);">
+                <div class="col-lg-12">
+                    <div class="header_about" style="margin-bottom: 50px;">
+                        <h3 class="fw-bold text-center">Available Items</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-2 mb-3 text-center">
+                    <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Drink')">
+                        <img src="../html files/img/drink icon.jpg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 shadow hover-zoom" alt="">
+                        <p class="text-center" style="opacity: 75%;">Drinks</p>
+                    </a>
+                </div>
+
+                <div class="col-md-2 mb-3 text-center">
+                    <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Fried')">
+                        <img src="../html files/img/fried icon.jpeg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 shadow hover-zoom" alt="">
+                        <p class="text-center" style="opacity: 75%;">Fired</p>
+                    </a>
+                </div>
+
+                <div class="col-md-2 mb-3 text-center">
+                    <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Salad')">
+                        <img src="../html files/img/salad icon.jpeg" style="width: 30%; max-height: 300px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 shadow hover-zoom" alt="">
+                        <p class="text-center" style="opacity: 75%;">Salad</p>
+                    </a>
+                </div>
+
+                <div class="col-md-2 mb-3 text-center">
+                    <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Fast_Food')">
+                        <img src="../html files/img/fast food icon.jpeg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 shadow hover-zoom" alt="">
+                        <p class="text-center" style="opacity: 75%;">Fast Food</p>
+                    </a>
+                </div>
+
+                <div class="col-md-2 mb-3 text-center">
+                    <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Soup')">
+                        <img src="../html files/img/soup icon.jpeg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 shadow hover-zoom" alt="">
+                        <p class="text-center" style="opacity: 75%;">Soup</p>
+                    </a>
+                </div>
+
+                <div class="col-md-2 mb-3 text-center">
+                    <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Curry')">
+                        <img src="../html files/img/curry icon.jpeg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 shadow hover-zoom" alt="">
+                        <p class="text-center" style="opacity: 75%;">Curry</p>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- items list -->
+            
+                <div class="row m-5">
+
+                    <!-- for search box -->
+                        
+                    <form class="d-flex justify-content-center" role="search">
+                        <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 100%">
+                        <button class="btn" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
+                    </form>
+                        
+                        <!-- for show items -->
+                        <div id="changeCategory"></div>
+                       
+                        <!-- for items -->
+                        <div class="row mt-5 g-0">
+
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 g-0">
+
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 g-0">
+
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                <div class="card w-100" style="width: 18rem;">
+                                    <img src="../html files/img/iced Mocha.jpeg" class="card-img-top" alt="drink">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="card-title"><b>Iced Mocha</b></h5>
+                                            <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
+                                            <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
+                                            <a href="#" class="btn">Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            
+           
+            
+        </div>
+    </div>
+
+    <!-- for footer -->
+    <div id="Footer"></div>
+
+    <!--For Footer end-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(function () {
+        $('#header_nav').load('Header.html');
+        $('#Footer').load('footer.html');
+      });
+    </script>
+
+
+    
+</body>
+</html>

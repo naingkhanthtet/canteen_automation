@@ -1,0 +1,14 @@
+/* for icon effect */
+.hover-zoom {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.1);
+}
+
+/* for serach box */
+.form-control:focus {
+  border-color: #F1A661; /* Change this to your desired color */
+  box-shadow: 0 0 0 0.25rem rgba(241, 166, 97, 0.25);
+}

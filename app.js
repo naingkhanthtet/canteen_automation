@@ -26,8 +26,10 @@ app.use(express.urlencoded( {extended:false }));
 
 app.set('view engine', 'hbs');
 
-const location = path.join(__dirname, './public');
-app.use(express.static(location));
+app.use(express.static(path.join(__dirname, './public')));
+
+const images = './images';
+app.locals.imageBasePath = images;
 
 const partialsPath = path.join(__dirname, './views/partials/');
 hbs.registerPartials(partialsPath);
