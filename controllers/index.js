@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
+const {promisify} = require('util');
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -61,7 +61,6 @@ exports.login = async (req, res) => {
     }
 };
 
-// register
 exports.register = (req, res) => {
     const {username, email, phone, batch, password, confirm_password} = req.body;
 
@@ -100,7 +99,7 @@ exports.isLoggedIn = async (req, res, next) => {
             process.env.JWT_SECRET
         );
 
-        db.query ("select * from users where uid=?",
+        db.query("select * from users where uid=?",
             [decode.id],
             (err, result) => {
                 if (!result) {
