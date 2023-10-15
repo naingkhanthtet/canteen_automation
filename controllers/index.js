@@ -64,12 +64,22 @@ exports.login = async (req, res) => {
 exports.register = (req, res) => {
     const {username, email, phone, batch, password, confirm_password} = req.body;
 
-    db.query("select email from users where email=?", [email], async (err, result) => {
+    db.query("select email, passwd from users where email=? or passwd=?", [email, username, password], async (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
-            return res.render('register', {msg: 'email id already taken'});
+            for (const row of result) {
+                if (row.email === email) {
+                    return res.render('register', {msg: 'email is already taken'});
+                }
+                if (row.passwd === password) {
+                    return res.render('register', {msg: 'Use another password please'});
+                }
+            }
         } else if (password !== confirm_password) {
-            return res.render('register', {msg: 'Pwds do not match'});
+            return res.render('register', {msg: 'Passwords do not match'});
+        } else if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+            // regular expression resource = https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+            return res.render('register', {msg: 'Change password! At least 8 characters, 1 Uppercase, 1 lowercase, 1 special character'});
         }
         let hashedPw = await bcrypt.hash(password, 8);
 

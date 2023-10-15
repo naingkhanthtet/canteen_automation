@@ -27,8 +27,6 @@
 </head>
 <body>
 <h1>Welcome home {{user.username}}</h1>
-<!-- for header nav -->
-<div id="header_nav"></div>
 <!-- body -->
 <div class="background p-3 mb-2">
 
@@ -137,69 +135,6 @@
                             </div>
                         </div>
 
-
-                        <div class="carousel-item" data-bs-interval="2000">
-
-                            <div class="row g-0">
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="carousel-item" data-bs-interval="2000">
 
                             <div class="row g-0">
@@ -237,21 +172,7 @@
                                         <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
                                         <div class="card-body">
                                             <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Min may loe lite</b></h5>
+                                                <h5 class="card-title"><b>Coffee Aye</b></h5>
                                                 <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
                                                 <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
                                                 <a href="#" class="btn">Order</a>
@@ -313,18 +234,7 @@
     </div>
 
 </div>
-
-<!-- for footer -->
-<div id="Footer"></div>
-
-<!--For Footer end-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(function () {
-        $('#header_nav').load('Header.html');
-        $('#Footer').load('footer.html');
-    });
-</script>
+{{> footer }}
 
 </body>
 </html>

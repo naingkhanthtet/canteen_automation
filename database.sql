@@ -12,7 +12,7 @@ use canteen;
 
 create table Users (
     uid INT AUTO_INCREMENT primary key,
-    username varchar(20) unique not null,
+    username varchar(20) not null,
     email varchar(50) unique not null,
     passwd varchar(255) unique not null,
     phone varchar(11) unique not null,
@@ -25,7 +25,8 @@ create table Menus (
     mname varchar(255) unique not null,
     quantity INT not null,
     price INT not null,
-    mrole ENUM('Curry', 'Drink', 'Fries', 'Salad', 'Fast', 'Soup') not null
+    mrole ENUM('Curry', 'Drink', 'Fries', 'Salad', 'Fast', 'Soup') not null,
+    imgUrl varchar(255) not null
 );
 
 insert into Users(username, email, passwd, phone, batch) values

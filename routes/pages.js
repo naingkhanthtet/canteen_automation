@@ -14,4 +14,12 @@ router.get('/home', index.isLoggedIn, (req, res) => {
     }
 })
 
+router.get('/menu', index.isLoggedIn, (req, res) => {
+    if (req.user) {
+        res.render('menu_f_user', {user: req.user});
+    } else {
+        res.redirect('/login');
+    }
+})
+
 module.exports = router;
