@@ -6,9 +6,9 @@ router.get(['/', '/login'], index.loginPage);
 
 router.get('/register', index.registerPage);
 
-router.get('/home', index.isLoggedIn, (req, res) => {
+router.get('/home', index.isLoggedIn, index.specialItems, (req, res) => {
     if (req.user) {
-        res.render('home', {user: req.user});
+        res.render('home', {user: req.user, items: req.specialItems});
     } else {
         res.redirect('/login');
     }
@@ -36,6 +36,6 @@ router.get('/contactus', index.isLoggedIn, (req, res) => {
     } else {
         res.redirect('/login');
     }
-})
+});
 
 module.exports = router;

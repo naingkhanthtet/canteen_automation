@@ -28,57 +28,45 @@
 </head>
 <body>
 
-<!-- for logo -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <!-- Image row -->
-        <div class="row mx-auto">
-            <a class="navbar-brand d-flex justify-content-center" href="/home">
-                <img src="/images/logo.png" alt="logo image" width="10%">
-            </a>
+<!-- nav bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom: 2px solid #F1A661;">
+    <div class="container-fluid">
+        <!-- for logo -->
+        <a class="navbar-brand" href="/home" style="margin-left: 5%;">
+            <img src="/images/logo.png" alt="Logo" width="10%">
+        </a>
+
+        <!-- for menu icon -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                {{#if user}}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutus">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contactus">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu">Foods</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/logout">Logout</a>
+                    </li>
+                {{else}}
+                    <li><a class="dropdown-item" href="/login">Login</a></li>
+                    <li><a class="dropdown-item" href="/register">Register</a></li>
+                {{/if}}
+            </ul>
         </div>
-    </div>
-</nav>
-
-<!-- for navbar -->
-<nav class="navbar2 navbar-expand-lg navbar-light bg-light" style="border-bottom: 2px solid #F1A661;">
-
-    <!-- Navigation row-->
-    <div class="row mx-auto">
-        <!-- for nav buttons -->
-        <ul class="nav justify-content-center">
-            {{#if user}}
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/aboutus">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contactus">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/menu">Food Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/auth/logout">Log out</a>
-                </li>
-
-            {{else}}
-                <li><a class="dropdown-item" href="/login">Login</a></li>
-                <li><a class="dropdown-item" href="/register">Register</a></li>
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"-->
-<!--                       data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                        Account-->
-<!--                    </a>-->
-
-<!--                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
-<!--                        -->
-<!--                    </ul>-->
-<!--                </li>-->
-            {{/if}}
-        </ul>
     </div>
 </nav>
 

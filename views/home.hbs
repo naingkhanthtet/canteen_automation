@@ -74,167 +74,78 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="10000">
-
                             <div class="row g-0">
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
+                                {{#each items}}
+                                    <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
+                                        <div class="card w-100" style="width: 18rem;">
+                                            <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
+                                                 style="width: 100%; height: 250px; object-fit: cover;">
+                                            <div class="card-body">
+                                                <div class="text-center">
+                                                    <h5 class="card-title"><b>{{this.mname}}</b></h5>
+                                                    <p class="card-text" style="opacity: 60%;">{{this.mnote}}</p>
+                                                    <p class="card-text" style="font-size: 30px;">{{this.price}}
+                                                        MMK</p>
+                                                    <a href="#" class="btn">Order</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {{/each}}
 
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--                                &lt;!&ndash; for left arrow &ndash;&gt;-->
+                                <!--                                <button class="carousel-control-prev ms-auto" type="button"-->
+                                <!--                                        data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">-->
+                                <!--                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+                                <!--                                    <span class="visually-hidden">Previous</span>-->
+                                <!--                                </button>-->
+                                <!--                                &lt;!&ndash; for right arrow &ndash;&gt;-->
+                                <!--                                <button class="carousel-control-next me-auto" type="button"-->
+                                <!--                                        data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">-->
+                                <!--                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+                                <!--                                    <span class="visually-hidden">Next</span>-->
+                                <!--                                </button>-->
                             </div>
                         </div>
-
-                        <div class="carousel-item" data-bs-interval="2000">
-
-                            <div class="row g-0">
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem; border: 1px solid #E38B29;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                                    <div class="card w-100" style="width: 18rem;">
-                                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h5 class="card-title"><b>Coffee Aye</b></h5>
-                                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                                <a href="#" class="btn">Order</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- for left arrow -->
-                        <button class="carousel-control-prev ms-auto" type="button"
-                                data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <!-- for right arrow -->
-                        <button class="carousel-control-next me-auto" type="button"
-                                data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
                 </div>
+
             </div>
-        </div>
 
-    </div>
+            <div class="container">
+                <div class="container-fluid mt-5 justify-content-center d-flex align-content-center rounded-5 shadow"
+                     style="background-color: rgb(255, 216, 169); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
 
-    <div class="container">
-        <div class="container-fluid mt-5 justify-content-center d-flex align-content-center rounded-5 shadow"
-             style="background-color: rgb(255, 216, 169); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
-
-            <div class="container-fluid mt-2 justify-content-center d-flex align-content-center rounded-5 shadow mt-5 mb-5"
-                 style="background-color: white; margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
-                <div class="row m-5">
-                    <!-- for about icons -->
-                    <div class="col-md-6">
-                        <div class="row text-center">
+                    <div class="container-fluid mt-2 justify-content-center d-flex align-content-center rounded-5 shadow mt-5 mb-5"
+                         style="background-color: white; margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
+                        <div class="row m-5">
+                            <!-- for about icons -->
                             <div class="col-md-6">
-                                <img src="/images/canteen4.jpeg" alt="">
+                                <div class="row text-center">
+                                    <div class="col-md-6">
+                                        <img src="/images/canteen4.jpeg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- for about us button -->
+                            <div class="col-md-6 text-center">
+                                <div class="text-center">
+                                    <h5 class="card-title"><b>We Make the Best Food</b></h5>
+                                    <h5 class="card-title"><b>For you...</b></h5>
+                                    <p class="card-text" style="font-size: 10px;">Best Food in Buget and you can get it
+                                        Fresh
+                                        and Hot</p>
+                                    <a href="#" class="btn">Know More About Us</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- for about us button -->
-                    <div class="col-md-6 text-center">
-                        <div class="text-center">
-                            <h5 class="card-title"><b>We Make the Best Food</b></h5>
-                            <h5 class="card-title"><b>For you...</b></h5>
-                            <p class="card-text" style="font-size: 10px;">Best Food in Buget and you can get it Fresh
-                                and Hot</p>
-                            <a href="#" class="btn">Know More About Us</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-
         </div>
+        {{> footer }}
     </div>
-
 </div>
-{{> footer }}
-
 </body>
 </html>

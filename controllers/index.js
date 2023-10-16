@@ -123,6 +123,14 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 };
 
+exports.specialItems = async (req, res, next) => {
+    db.query("select * from menus", (err, result) => {
+        if (err) throw err;
+        req.specialItems = result;
+        next();
+    });
+};
+
 exports.logout = async (req, res) => {
     res.cookie('joes', 'logout', {
         expires: new Date(Date.now() + 2 * 1000),
