@@ -4,7 +4,7 @@ const index = require('../controllers/index');
 
 router.get(['/', '/login'], index.loginPage);
 
-router.get('/register', index.registerPage)
+router.get('/register', index.registerPage);
 
 router.get('/home', index.isLoggedIn, (req, res) => {
     if (req.user) {
@@ -12,11 +12,27 @@ router.get('/home', index.isLoggedIn, (req, res) => {
     } else {
         res.redirect('/login');
     }
-})
+});
 
 router.get('/menu', index.isLoggedIn, (req, res) => {
     if (req.user) {
         res.render('menu_f_user', {user: req.user});
+    } else {
+        res.redirect('/login');
+    }
+});
+
+router.get('/aboutus', index.isLoggedIn, (req, res) => {
+    if (req.user) {
+        res.render('about_us', {user: req.user});
+    } else {
+        res.redirect('/login');
+    }
+});
+
+router.get('/contactus', index.isLoggedIn, (req, res) => {
+    if (req.user) {
+        res.render('contact_us', {user: req.user});
     } else {
         res.redirect('/login');
     }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{{> header_test}}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,6 @@
 
     <title>Food Menu</title>
 </head>
-
 
 
 <!-- body -->
@@ -295,25 +295,9 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
 </div>
-
-
-<!-- for footer -->
-<div id="Footer"></div>
-
-<!--For Footer end-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(function () {
-        $('#header_nav').load('header_test.hbs');
-        $('#Footer').load('footer.hbs');
-    });
-</script>
-
+{{>footer}}
 
 </body>
 </html>
