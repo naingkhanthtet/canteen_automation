@@ -8,15 +8,18 @@ router.get('/register', index.registerPage);
 
 router.get('/home', index.isLoggedIn, index.specialItems, (req, res) => {
     if (req.user) {
-        res.render('home', {user: req.user, items: req.specialItems});
+        res.render('home', {user: req.user, specials: req.Special});
     } else {
         res.redirect('/login');
     }
 });
 
-router.get('/menu', index.isLoggedIn, (req, res) => {
+router.get('/menu', index.isLoggedIn, index.categoryData, (req, res) => {
     if (req.user) {
-        res.render('menu_f_user', {user: req.user});
+        res.render('menu_f_user', {
+            user: req.user,
+            categoryData: req.categoryData,
+        });
     } else {
         res.redirect('/login');
     }

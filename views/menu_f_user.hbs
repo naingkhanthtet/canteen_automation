@@ -24,12 +24,15 @@
     <script src="/javascripts/menu.js" defer></script>
 
     <title>Food Menu</title>
+    <link rel="icon" href="/images/logo.png" type="img/png">
 </head>
 
 
 <!-- body -->
 <body style="background-color: rgb(253, 238, 220);">
-
+<script type="text/javascript">
+    const categoryData = {{json categoryData}};
+</script>
 <!-- for menu categories -->
 <div class="container">
     <div class="container-fluid mt-5 mb-5 justify-content-center align-content-center rounded-5 shadow"
@@ -118,183 +121,25 @@
             <div id="changeCategory"></div>
 
             <!-- for items -->
-            <div class="row mt-5 g-0">
 
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row m-5 justify-content-center">
+                <div class="col-md-3 mb-3">
+                    <!-- Card 1 -->
                 </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-3 mb-3">
+                    <!-- Card 2 -->
                 </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-3 mb-3">
+                    <!-- Card 3 -->
                 </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-3 mb-3">
+                    <!-- Card 4 -->
                 </div>
             </div>
 
-            <div class="row mt-5 g-0">
 
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-5 g-0">
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 no-padding-col" style="padding: 0.5%;">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="/images/iced Mocha.jpeg" class="card-img-top" alt="drink">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="card-title"><b>Iced Mocha</b></h5>
-                                <p class="card-text" style="opacity: 60%;">Bitter and Milky</p>
-                                <p class="card-text" style="font-size: 30px;">3,000 MMK</p>
-                                <a href="#" class="btn">Order</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+
     </div>
 </div>
 {{>footer}}

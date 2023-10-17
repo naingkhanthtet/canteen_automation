@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const hbs = require('hbs');
+const handleBars = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 
 require('dotenv').config({ path: './.env'})
@@ -20,6 +21,15 @@ db.connect(function(err) {
     else console.log('Mysql connected');
 });
 
+const hbsJson = handleBars.create({
+    helpers: {
+        json: function (context) {
+            return JSON.stringify(context);
+        },
+    },
+});
+app.engine('hbs', hbsJson.engine);
+
 // app.use(cookieParser());
 app.use(cookieParser());
 app.use(express.urlencoded( {extended:false }));
@@ -31,7 +41,7 @@ app.use(express.static(path.join(__dirname, './public')));
 const images = './images';
 app.locals.imageBasePath = images;
 
-const partialsPath = path.join(__dirname, './views/partials/');
+const partialsPath = path.join(__dirname, 'views', 'partials');
 hbs.registerPartials(partialsPath);
 
 app.use('/', require('./routes/pages'));
