@@ -26,31 +26,39 @@
     <title>Home</title>
 </head>
 <body>
-<!--<h1>Welcome home {{user.username}}</h1>-->
+{{order_detail}}
 <!-- body -->
+{{card_order}}
 <div class="background p-3 mb-2">
 
     <div class="header-1" style="margin-left: 1.5%; margin-right: 1.5%;">
-        <div class="container-fluid mt-4 justify-content-center  align-content-center rounded-5 shadow" style="background-color: rgb(255, 255, 255); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
+        <div class="container-fluid mt-4 justify-content-center  align-content-center rounded-5 shadow"
+             style="background-color: rgb(255, 255, 255); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
 
             <div class="row">
-                <div class="col-lg-6" >
+                <div class="col-lg-6">
                     <p style="margin-left: 15%; margin-top: 15%; font-size: 50px;">Welcome</p>
                     <p style="margin-left: 50%; font-size: 35px;">to</p>
                     <p style="margin-left: 65%; font-size: 50px;">Canteen</p>
 
-                    <p  class="d-flex justify-content-center" style="margin-top: 25%; ">Eat Tasty Dish EveryDay!!!</p>
-
-                    <button type="button" class="btn d-flex justify-content-center mx-auto" style="width: 50%; color: #000; background-color: #E38B29;" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                        </svg>  Order
-                    </button>
-                    <p class="d-flex justify-content-center" style="margin-top: 2%;">You can Order Food by clicking Order Food Button...</p>
+                    <p class="d-flex justify-content-center" style="margin-top: 25%; ">Eat Tasty Dish EveryDay!!!</p>
+                    <a href="/menu">
+                        <button type="button" class="btn d-flex justify-content-center mx-auto"
+                                style="width: 50%; color: #000; background-color: #E38B29;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg>
+                            Order
+                        </button>
+                    </a>
+                    <p class="d-flex justify-content-center" style="margin-top: 2%;">You can Order Food by clicking
+                        Order Food Button...</p>
                 </div>
 
                 <div class="col-lg-6">
-                    <img src="/images/canteen1.jpeg" alt="canteen1" class="img-fluid w-100" style="width: 100%; height: 100%; border-radius: 28px; padding-top: 1.5%; padding-bottom: 1.5%;">
+                    <img src="/images/canteen1.jpeg" alt="canteen1" class="img-fluid w-100"
+                         style="width: 100%; height: 100%; border-radius: 28px; padding-top: 1.5%; padding-bottom: 1.5%;">
                 </div>
             </div>
 
@@ -82,7 +90,8 @@
                                             <div class="card-body">
                                                 <div class="text-center">
                                                     <h5 class="card-title"><b>{{this.mname}}</b></h5>
-                                                    <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
+                                                    <p class="card-text"
+                                                       style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                                     <p class="card-price" style="font-size: 1rem;">{{this.price}}
                                                         MMK</p>
                                                     <a href="#" class="btn" style="background-color: #E38B29">Order</a>
@@ -99,19 +108,25 @@
             </div>
 
             <div class="header-3" style="margin-left: 1.5%; margin-right: 1.5%;">
-                <div class="container-fluid mt-5  d-flex rounded-5 shadow" style="background-color: rgb(255, 216, 169); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
+                <div class="container-fluid mt-5  d-flex rounded-5 shadow"
+                     style="background-color: rgb(255, 216, 169); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
                     <div class="row">
 
                         <div class="col-lg-6">
-                            <img src="/images/canteen4.jpeg" alt="canteen1" class="img-fluid w-100" style="width: 750px; height: 650px; border-radius: 28px; padding-top: 1.5%; padding-bottom: 1.5%;">
+                            <img src="/images/canteen4.jpeg" alt="canteen1" class="img-fluid w-100"
+                                 style="width: 750px; height: 650px; border-radius: 28px; padding-top: 1.5%; padding-bottom: 1.5%;">
                         </div>
 
                         <!-- for about us button -->
                         <div class="col-lg-6 mt-5">
-                            <h5 class="card-title" style="text-align: center; font-size: 50px;  margin-top: 7%;" ><b>We Make the Best Food</b></h5>
-                            <h5 class="card-title" style="text-align: center; font-size: 25px; margin-top: 5%;"><b>For you...</b></h5>
-                            <p class="card-text" style="text-align: center; font-size: 15px; margin-top: 10%;">Best Food in Buget and you can get it  Fresh and Hot</p>
-                            <button type="button" class="btn d-flex justify-content-center mx-auto" style="width:50%; margin-top: 15%; background-color: #E38B29;" >
+                            <h5 class="card-title" style="text-align: center; font-size: 50px;  margin-top: 7%;"><b>We
+                                Make the Best Food</b></h5>
+                            <h5 class="card-title" style="text-align: center; font-size: 25px; margin-top: 5%;"><b>For
+                                you...</b></h5>
+                            <p class="card-text" style="text-align: center; font-size: 15px; margin-top: 10%;">Best Food
+                                in Buget and you can get it Fresh and Hot</p>
+                            <button type="button" class="btn d-flex justify-content-center mx-auto"
+                                    style="width:50%; margin-top: 15%; background-color: #E38B29;">
                                 <a href="#" class="btn" style="margin-left: 2%; font-size: 20px;">Know More About Us</a>
                             </button>
                         </div>
@@ -119,8 +134,8 @@
                 </div>
             </div>
         </div>
-        {{> footer }}
     </div>
 </div>
 </body>
+{{> footer }}
 </html>

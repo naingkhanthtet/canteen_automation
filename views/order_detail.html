@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+    <!-- Bootstrupt CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>    
+    <!-- for CSS -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <style>
+        /* Custom styles, if needed */
+        .responsive-img {
+            width: 100%;
+            border-radius: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <!-- icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+    <!-- for link JavaScript -->
+    <script src="../public/javascripts/order_detail.js" defer></script>
+
+    <title>Home</title>
+    <link rel="icon" href="/images/logo.png" type="img/png">
+
+</head>
+<body>
+
+    <!-- Order Detail button -->
+    <div class="box p-2" style="background-color: white; border-radius: 10px; border: 2px solid white">
+        <button type="button" class="btn w-100" data-bs-toggle="modal" data-bs-target="#orderdetail" style="background-color: rgb(241, 166, 97);">
+            Order Details (2)
+        </button>
+    </div>
+    
+
+    <!-- Order detail page -->
+    <div class="modal fade" id="orderdetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 900px; max-width: 90vw; height: 800px; max-height: 90vh;">
+            <div class="modal-content" style="background-color: rgb(255, 216, 169);">
+
+                <div class="modal-header d-flex flex-column align-items-center">
+                    <h5 class="modal-title text-center fs-4">Order Detail</h5>
+                    <p style="text-align: center; margin-top: 5%;">You can edit items Category by using Plus and Minus Button... </p>
+                </div>
+
+                <!-- modal body -->
+                <div class="modal-body">
+
+                    <!-- order list 1-->
+                    <div class="row m-5 rounded-4" style="border: 1px solid rgb(241, 166, 97); background-color: white; display: flex; flex-wrap: wrap; align-items: center; padding: 10px;">
+
+                        <div class="col-md-3 text-center mt-1">
+                            <img src="/images/drinks/iced Mocha.jpeg" class="responsive-img" alt="drink" style="width: 120px; height: 120px;">
+                        </div>
+                        
+
+                        <div class="col-md-6" style="border-right: 2px solid rgb(241, 166, 97); padding: 0 10px; margin-bottom: 10px; width: 250px;">
+                            <div style="font-size: 15px;"><b>Iced Mocha</b></div>
+                            <div style="font-size: 12px;">Bitter and Milky</div>
+                            <div style="margin-top: 10px; font-size: 20px;">3000 MMK</div>
+                        </div>
+
+                        <div class="col-md-4 d-flex justify-content-center">
+                            <div class="input-group">
+                                <button class="btn btn-outline-secondary" type="button" id="minus-btn" style="background-color: red; color: white; padding: 10px;">-</button>
+                                <input type="text" id="quantity" class="form-control text-center" value="1" style="width: 40px;">
+                                <button class="btn btn-outline-secondary" type="button" id="plus-btn" style="background-color: green; color: white; padding: 10px;">+</button>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                     <!-- order list 2-->
+                     <div class="row m-5 rounded-4" style="border: 1px solid rgb(241, 166, 97); background-color: white; display: flex; flex-wrap: wrap; align-items: center; padding: 10px;">
+
+                        <div class="col-md-3 text-center mt-2">
+                            <img src="/images/drinks/iced Mocha.jpeg" class="responsive-img" alt="drink" style="width: 120px; height: 120px;">
+                        </div>
+                        
+
+                        <div class="col-md-6" style="border-right: 2px solid rgb(241, 166, 97); padding: 0 10px; margin-bottom: 10px; width: 250px;">
+                            <div style="font-size: 15px;"><b>Iced Mocha</b></div>
+                            <div style="font-size: 12px;">Bitter and Milky</div>
+                            <div style="margin-top: 10px; font-size: 20px;">3000 MMK</div>
+                        </div>
+
+                        <div class="col-md-4 d-flex justify-content-center">
+                            <div class="input-group">
+                                <button class="btn btn-outline-secondary" type="button" id="minus-btn" style="background-color: red; color: white; padding: 10px;">-</button>
+                                <input type="text" id="quantity" class="form-control text-center" value="1" style="width: 40px;">
+                                <button class="btn btn-outline-secondary" type="button" id="plus-btn" style="background-color: green; color: white; padding: 10px;">+</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    
+                        
+                        <!-- for payment type drop down select-->
+                        <div class="container m-5">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn selection dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: rgb(241, 166, 97);" id="paymentButton" disabled>
+                                            Payment Type
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#" onclick="updateButton('KBz Pay')">KBz Pay</a>
+                                            <a class="dropdown-item" href="#" onclick="updateButton('AYA Pay')">AYA Pay</a>
+                                            <a class="dropdown-item" href="#" onclick="updateButton('Wave Pay')">Wave Pay</a>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+                                <!-- for payment type radio button -->
+                                <div class="col-md-6">
+                                    <h3>Choose an Option:</h3>
+                                    
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="exampleRadio" id="radioOption1" value="option1" onclick="disableDropdown()">
+                                        <label class="form-check-label" for="radioOption1">Pay after Pick Up</label>
+                                    </div>
+                                    
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="exampleRadio" id="radioOption2" value="option2" onclick="enableDropdown()">
+                                        <label class="form-check-label" for="radioOption2">Pre Pay</label>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+                                <!-- Horizontal line with reduced width -->
+                                <hr style="border-top: 3px solid black; margin-top: 20px; margin-bottom: 20px; width: 85%;">
+
+                                <!-- Total amount -->
+                                <div class="row" style="margin-top: 5%;">
+
+                                    <div class="col" style="font-size: 35px; opacity: 70%;">
+                                        <p> Total Amount:</p>
+                                    </div>
+                                
+                                    <div class="col" style="font-size: 35px; margin-left: 2%;">
+                                        <p>6000 MMK</p>
+                                    </div>
+                                </div>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer justify-content-center">
+
+                        <!-- Centered buttons -->
+                        <button type="button" class="button_ho shadow rounded-3" data-bs-dismiss="modal" style="background-color: red; width:200px; height:50px; border:1px solid white; color: white; margin-right: 50px;">
+                            Cancel
+                        </button>
+                        <button type="button" class="button_ho shadow rounded-3" style="background-color: green; color: white; width:200px; height:50px ; border:1px solid white;">
+                            Confirm
+                        </button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+
+</body>
+</html>
