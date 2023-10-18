@@ -1,15 +1,15 @@
-.background {
+/* .background {
     background-color: #FDEEDC;
     
 }
 
-/* for special items */
+for special items
 img {
     padding: 0;
 
 }
 
-/* for slide show css */
+for slide show css
 
 .card{
     border-color: 1px solid #E38B29;
@@ -20,4 +20,40 @@ img {
     width: 100%;
 }
 
+ */
 
+
+ body {
+    background-color: rgb(253, 238, 220);
+}
+
+
+.container-menu {
+    background-color: rgb(255, 255, 255);
+    margin-right: 20px;
+    border: 1px solid rgb(241, 166, 97);
+}
+
+.menu-category {
+    border-bottom: 2px solid rgb(241, 166, 97);
+    margin-bottom: 50px;
+}
+
+.category-item {
+    color: grey;
+}
+
+#loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+/* .btn:hover {
+    background-color: white;
+    transform: scale(1.1); 
+    transition: background-color 0.3s, transform 0.3s; 
+} */

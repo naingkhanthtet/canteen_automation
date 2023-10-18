@@ -41,21 +41,46 @@ insert into Menus(mname, mnote, quantity, price, mrole, imgUrl) values
 --     curry
     ('Beef Curry', 'Tasty and spicy beef', 10, 2500, 'Curry', '/images/curry/Beef Curry.jpeg'),
     ('Chicken Curry', 'for everyone! Sweet and sour', 10, 2500, 'Curry', '/images/special/Chicken curry.jpeg'),
+    ('Egg Curry', 'for everyone! Nutritious', 10, 2500, 'Curry', '/images/special/Egg curry.jpeg'),
+    ('Fish Curry', 'for soft meat lover', 10, 2500, 'Curry', '/images/special/Fish curry.jpeg'),
+    ('Goat Curry', 'Tasty and best aroma', 10, 2500, 'Curry', '/images/special/Goat curry.jpeg'),
+    ('Pork Curry', 'best pair with Rice', 10, 2500, 'Curry', '/images/special/Pork curry.jpeg'),
+    ('Rice', 'Essential for meal', 10, 500, 'Curry', '/images/special/Rice.jpeg'),
 --     drinks
     ('Americano', 'For black coffee lovers', 10, 1500, 'Drink', '/images/drinks/Americano.jpeg'),
     ('Cappuccino', 'Any foam lovers?', 10, 1500, 'Drink', '/images/drinks/Cappuccino.jpeg'),
+    ('Cola (Plastic)', 'Fresh and recover', 10, 1000, 'Drink', '/images/drinks/Cola plastic.jpeg'),
+    ('Espresso', 'Caffeine indeed', 10, 1500, 'Drink', '/images/drinks/Espresso.jpeg'),
+    ('Honey Lemon', 'Change your mood with Honey', 10, 1000, 'Drink', '/images/drinks/Honey Lemon.jpeg'),
+    ('Hot milk', 'Less carbohydrate, more protein', 10, 1000, 'Drink', '/images/drinks/Hot milk.jpeg'),
+    ('Iced Mocha', 'Refresh your mood', 10, 2000, 'Drink', '/images/drinks/iced Mocha.jpeg'),
+    ('Kiwi juice', 'Sweet and Sour', 10, 1500, 'Drink', '/images/drinks/Kiwi juice.jpeg'),
 --     fast food
     ('Burger', 'All in one nutrient!', 10, 2000, 'Fast', '/images/fast/Burger.jpeg'),
     ('Cakes', 'Best pair with Coffee', 10, 1000, 'Fast', '/images/fast/Cakes.jpeg'),
+    ('Chicken Tacos', 'Delicious and nutritious', 10, 2000, 'Fast', '/images/fast/Chicken Tacos.jpeg'),
+    ('Cookies', 'Best pair with Coffee', 10, 1000, 'Fast', '/images/fast/Cookies.jpeg'),
+    ('Corndog', 'Light food for study', 10, 2000, 'Fast', '/images/fast/Corndog.jpeg'),
+    ('Croissant', 'Best pair with Coffee', 10, 1000, 'Fast', '/images/fast/Croissant.jpeg'),
 --     fries
     ('French Fries', 'Best pair with Coke!', 10, 1000, 'Fries', '/images/fries/French Fried.jpeg'),
     ('Fried Egg', 'Rich protein', 10, 500, 'Fries', '/images/fries/Fried Egg.jpeg'),
+    ('Fried Fish', 'Greater with sauce', 10, 1500, 'Fries', '/images/fries/Fried Fish.jpeg'),
+    ('Fried Noodle', 'All in one nutrient', 10, 3000, 'Fries', '/images/fries/Fried Noodle.jpeg'),
+    ('Fried Pork', 'Light food, great taste', 10, 1500, 'Fries', '/images/fries/Fried Pork.jpeg'),
+    ('Fried Prawn', 'Luxurious taste', 10, 2000, 'Fries', '/images/fries/Fried Prawn.jpeg'),
 --     salad
     ('Burmese rice salad', 'Rich nutrient for students', 10, 1500, 'Salad', '/images/salad/Burmese rice salad.jpeg'),
     ('Ginger salad', 'Sour but tasteful', 10, 1500, 'Salad', '/images/salad/Ginger salad.jpeg'),
+    ('Pennywort salad', 'tasteful with rice', 10, 1500, 'Salad', '/images/salad/Pennywort salad.jpeg'),
+    ('Tealeaf salad', 'Essential for Burmese', 10, 1500, 'Salad', '/images/salad/Tealeaf salad.jpeg'),
+    ('Tofu salad', 'Best for Teachers', 10, 1500, 'Salad', '/images/salad/Tofu salad.jpeg'),
 --     soup
     ('Healing Chicken Soup', 'Rich protein and fresh', 10, 2000, 'Soup', '/images/soup/Healing Chicken Soup.jpeg'),
-    ('Mohinga', 'Essential for Burmese', 10, 1500, 'Soup', '/images/soup/Monhinga.jpeg')
+    ('Mohinga', 'Essential for Burmese', 10, 1500, 'Soup', '/images/soup/Mohinga.jpeg'),
+    ('Ohn no Khao swe', 'Best food when Starving', 10, 1500, 'Soup', '/images/soup/Ohn no Khao swe.jpeg'),
+    ('Tomato soup', 'Best with Bread', 10, 1500, 'Soup', '/images/soup/Tomato soup.jpeg'),
+    ('Tomyum', 'Essential soup for rice', 10, 1500, 'Soup', '/images/soup/Tom yum soup.jpeg')
     ;
 
 insert into Users(username, email, passwd, phone, batch) values

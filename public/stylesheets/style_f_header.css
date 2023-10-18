@@ -3,6 +3,10 @@
     header, footer {
       font-size: 16px;
     }
+
+    .nav-link {
+      text-align: center;
+    }
   }
   
   /* Larger than tablet, less than desktop */
@@ -19,14 +23,8 @@
     }
   }
 
-  .nav-link:hover {
-    color: #ffffff;
-    background-color: #E38B29;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(108, 108, 108, 0.5);
-  }
-
-  .dropdown-item:hover {
+  .navbar-nav .nav-link:hover {
+    text-align: center;
     color: #ffffff;
     background-color: #E38B29;
     border-radius: 20px;
@@ -39,14 +37,20 @@
     padding-left: 2%;
     margin-left: 25px;
     margin-right: 30px;
-  }
+    font-size: 20px;
+  } 
 
-
-  .nav-link {
-    margin-left: 50px;
+  .navbar-nav .nav-link {
+    margin-left: 25px;
     margin-right: 50px;
-    color: #ff5733;
+    color: #F1A661;
   }
+
+  .btn {
+    background-color: #E38B29;
+    box-shadow: gray;
+  }
+  
 
   
   @media (max-width: 980px) {

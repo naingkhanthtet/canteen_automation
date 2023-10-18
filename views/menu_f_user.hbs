@@ -27,25 +27,16 @@
     <link rel="icon" href="/images/logo.png" type="img/png">
 </head>
 
-
 <!-- body -->
 <body style="background-color: rgb(253, 238, 220);">
-<script type="text/javascript">
-    const categoryData = {{json categoryData}};
-</script>
 <!-- for menu categories -->
 <div class="container">
     <div class="container-fluid mt-5 mb-5 justify-content-center align-content-center rounded-5 shadow"
          style="background-color: rgb(255, 255, 255); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
         <div class="row m-5" style="border-bottom: 2px solid rgb(241, 166, 97);">
-            <div class="col-lg-12">
-                <div class="header_about" style="margin-bottom: 50px;">
-                    <h3 class="fw-bold text-center">Available Items</h3>
-                </div>
-            </div>
 
             <div class="col-md-2 mb-3 text-center">
-                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Drink')">
+                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('drink')">
                     <img src="/images/drink icon.jpg"
                          style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
                          class=" rounded-circle mb-3 shadow hover-zoom" alt="">
@@ -54,16 +45,16 @@
             </div>
 
             <div class="col-md-2 mb-3 text-center">
-                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Fried')">
+                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('fries')">
                     <img src="/images/fried icon.jpeg"
                          style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
                          class=" rounded-circle mb-3 shadow hover-zoom" alt="">
-                    <p class="text-center" style="opacity: 75%;">Fired</p>
+                    <p class="text-center" style="opacity: 75%;">Fries</p>
                 </a>
             </div>
 
             <div class="col-md-2 mb-3 text-center">
-                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Salad')">
+                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('salad')">
                     <img src="/images/salad icon.jpeg"
                          style="width: 30%; max-height: 300px; border: 1px solid rgb(241, 166, 97);"
                          class=" rounded-circle mb-3 shadow hover-zoom" alt="">
@@ -72,7 +63,7 @@
             </div>
 
             <div class="col-md-2 mb-3 text-center">
-                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Fast_Food')">
+                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('fast')">
                     <img src="/images/fast food icon.jpeg"
                          style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
                          class=" rounded-circle mb-3 shadow hover-zoom" alt="">
@@ -81,7 +72,7 @@
             </div>
 
             <div class="col-md-2 mb-3 text-center">
-                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Soup')">
+                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('soup')">
                     <img src="/images/soup icon.jpeg"
                          style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
                          class=" rounded-circle mb-3 shadow hover-zoom" alt="">
@@ -90,7 +81,7 @@
             </div>
 
             <div class="col-md-2 mb-3 text-center">
-                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('Curry')">
+                <a href="#" class="text-decoration-none" style="color: grey;" onclick="changeCategory('curry')">
                     <img src="/images/curry icon.jpeg"
                          style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
                          class=" rounded-circle mb-3 shadow hover-zoom" alt="">
@@ -103,44 +94,159 @@
         <!-- items list -->
 
         <div class="row m-5">
-
             <!-- for search box -->
-
             <form class="d-flex justify-content-center" role="search">
                 <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                        style="width: 100%">
-                <button class="btn" type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                         class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg>
-                </button>
             </form>
 
-            <!-- for show items -->
+            <!-- for specific category header -->
             <div id="changeCategory"></div>
 
-            <!-- for items -->
-
-            <div class="row m-5 justify-content-center">
-                <div class="col-md-3 mb-3">
-                    <!-- Card 1 -->
-                </div>
-                <div class="col-md-3 mb-3">
-                    <!-- Card 2 -->
-                </div>
-                <div class="col-md-3 mb-3">
-                    <!-- Card 3 -->
-                </div>
-                <div class="col-md-3 mb-3">
-                    <!-- Card 4 -->
+            <!-- curry -->
+            <div class="category-row" id="curry-category">
+                <div class="row g-0 mt-3" id="curry-category">
+                    {{#each curryItems}}
+                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                            <div class="card w-100" style="width: 18rem;">
+                                <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
+                                     style="width: 100%; height: 250px; object-fit: cover;">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title"><b>{{this.mname}}</b></h5>
+                                        <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
+                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                            MMK</p>
+                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
 
+            <!--            drink-->
+            <div class="category-row" id="drink-category">
+                <div class="row g-0 mt-3">
+                    {{#each drinkItems}}
+                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                            <div class="card w-100" style="width: 18rem;">
+                                <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
+                                     style="width: 100%; height: 250px; object-fit: cover;">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title"><b>{{this.mname}}</b></h5>
+                                        <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
+                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                            MMK</p>
+                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!--            drink-->
+            <div class="category-row" id="fries-category">
+                <div class="row g-0 mt-3">
+                    {{#each friesItems}}
+                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                            <div class="card w-100" style="width: 18rem;">
+                                <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
+                                     style="width: 100%; height: 250px; object-fit: cover;">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title"><b>{{this.mname}}</b></h5>
+                                        <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
+                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                            MMK</p>
+                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!--            salad-->
+            <div class="category-row" id="salad-category">
+                <div class="row g-0 mt-3">
+                    {{#each saladItems}}
+                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                            <div class="card w-100" style="width: 18rem;">
+                                <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
+                                     style="width: 100%; height: 250px; object-fit: cover;">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title"><b>{{this.mname}}</b></h5>
+                                        <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
+                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                            MMK</p>
+                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!--            fast-->
+            <div class="category-row" id="fast-category">
+                <div class="row g-0 mt-3">
+                    {{#each fastItems}}
+                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                            <div class="card w-100" style="width: 18rem;">
+                                <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
+                                     style="width: 100%; height: 250px; object-fit: cover;">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title"><b>{{this.mname}}</b></h5>
+                                        <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
+                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                            MMK</p>
+                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!--            soup-->
+            <div class="category-row" id="soup-category">
+                <div class="row g-0 mt-3">
+                    {{#each soupItems}}
+                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                            <div class="card w-100" style="width: 18rem;">
+                                <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
+                                     style="width: 100%; height: 250px; object-fit: cover;">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title"><b>{{this.mname}}</b></h5>
+                                        <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
+                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                            MMK</p>
+                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
 
         </div>
 
+
     </div>
+
+</div>
 </div>
 {{>footer}}
 

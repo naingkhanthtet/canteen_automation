@@ -132,61 +132,33 @@ const fetchMenu = (role, req, next) => {
     });
 }
 
-const categoryData = {};
-async function fetchCategoryData(role, req, next) {
-    return new Promise((resolve, reject) => {
-        fetchMenu(role, req, (err) => {
-            if (err) reject(err);
-
-            categoryData[role] = req[role];
-            resolve();
-        })
-    })
-}
-
-exports.categoryData = async (req, res, next) => {
-    try {
-        await fetchCategoryData('Drink', req, next);
-        await fetchCategoryData('Curry', req, next);
-        await fetchCategoryData('Fries', req, next);
-        await fetchCategoryData('Salad', req, next);
-        await fetchCategoryData('Fast', req, next);
-        await fetchCategoryData('Soup', req, next);
-    } catch (err) {
-        return next(err);
-    }
-
-    res.categoryData = categoryData;
-    next();
-};
-
 exports.specialItems = async (req, res, next) => {
     fetchMenu('Special', req, next);
 };
 
-// exports.curryItems = async (req, res, next) => {
-//     fetchMenu('Curry', req, next);
-// };
-//
-// exports.drinkItems = async (req, res, next) => {
-//     fetchMenu('Drink', req, next);
-// };
-//
-// exports.friesItems = async (req, res, next) => {
-//     fetchMenu('Fries', req, next);
-// };
-//
-// exports.saladItems = async (req, res, next) => {
-//     fetchMenu('Salad', req, next);
-// };
-//
-// exports.fastItems = async (req, res, next) => {
-//     fetchMenu('Fast', req, next);
-// };
-//
-// exports.soupItems = async (req, res, next) => {
-//     fetchMenu('Soup', req, next);
-// };
+exports.curryItems = async (req, res, next) => {
+    fetchMenu('Curry', req, next);
+};
+
+exports.drinkItems = async (req, res, next) => {
+    fetchMenu('Drink', req, next);
+};
+
+exports.friesItems = async (req, res, next) => {
+    fetchMenu('Fries', req, next);
+};
+
+exports.saladItems = async (req, res, next) => {
+    fetchMenu('Salad', req, next);
+};
+
+exports.fastItems = async (req, res, next) => {
+    fetchMenu('Fast', req, next);
+};
+
+exports.soupItems = async (req, res, next) => {
+    fetchMenu('Soup', req, next);
+};
 
 exports.logout = async (req, res) => {
     res.cookie('joes', 'logout', {

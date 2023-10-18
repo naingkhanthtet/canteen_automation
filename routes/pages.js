@@ -14,11 +14,16 @@ router.get('/home', index.isLoggedIn, index.specialItems, (req, res) => {
     }
 });
 
-router.get('/menu', index.isLoggedIn, index.categoryData, (req, res) => {
+router.get('/menu', index.isLoggedIn, index.curryItems, index.drinkItems, index.friesItems, index.saladItems, index.fastItems, index.soupItems, (req, res) => {
     if (req.user) {
         res.render('menu_f_user', {
             user: req.user,
-            categoryData: req.categoryData,
+            curryItems: req.Curry,
+            drinkItems: req.Drink,
+            friesItems: req.Fries,
+            saladItems: req.Salad,
+            fastItems: req.Fast,
+            soupItems: req.Soup
         });
     } else {
         res.redirect('/login');
