@@ -157,9 +157,8 @@ exports.soupItems = async (req, res, next) => {
     fetchMenu('Soup', req, next);
 };
 
-exports.cart = async (req, res, next) => {
+exports.cart = async (req, res) => {
     const {user_id, food_id, food_name, food_quantity, food_price, button_action} = req.body;
-    console.log(req.body);
 
     if (button_action === "add") {
         db.query("insert into Orders set ?", {
@@ -189,6 +188,28 @@ exports.cart = async (req, res, next) => {
     } else {
         res.status(401).json({success: false, msg: "What u looking for?"});
     }
+};
+
+exports.chkCart = async (req, res) => {
+    db.query("select mid, uid from Orders", (err, result) => {
+        if (err) {
+            res.status(500).json({error: "Database error"});
+        } else {
+            res.json(result);
+        }
+    });
+};
+
+exports.cartCount = async (req, res) => {
+    const user_id = req.params.userId;
+    db.query("select count(uid) as cartCount from Orders where uid=?", [user_id], (err, result) => {
+        if (err) {
+            res.status(500).json({error: "Database error"});
+        } else {
+            const cartCount = result[0].cartCount;
+            res.json({success: true, cartCount});
+        }
+    });
 };
 
 exports.logout = async (req, res) => {

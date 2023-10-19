@@ -48,4 +48,7 @@ router.get('/contactus', index.isLoggedIn, (req, res) => {
 
 router.post('/addCart', index.isLoggedIn, index.cart);
 
+router.get('/checkCart', index.isLoggedIn, index.chkCart);
+router.get('/cartCount/:userId', index.isLoggedIn, index.cartCount);
+
 module.exports = router;

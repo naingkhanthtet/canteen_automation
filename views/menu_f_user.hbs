@@ -22,6 +22,7 @@
 
     <!-- for link JavaScript -->
     <script src="/javascripts/menu.js" defer></script>
+    <script src="/javascripts/add_cart.js" defer></script>
 
     <title>Food Menu</title>
     <link rel="icon" href="/images/logo.png" type="img/png">
@@ -29,6 +30,18 @@
 
 <!-- body -->
 <body style="background-color: rgb(253, 238, 220);">
+<div id="user-id" style="display: none">{{user.uid}}</div>
+
+<div id="add_cart"
+     style="position: fixed; bottom: 0; left: 50%; margin-bottom: 1rem; transform: translateX(-50%); z-index: 999; width: 80%; display: none;">
+    <div class="box p-2" style="background-color: white; border-radius: 10px; border: 2px solid white">
+        <button type="button" class="btn w-100" data-bs-toggle="modal" data-bs-target="#orderdetail"
+                style="background-color: rgb(241, 166, 97);">
+            <span id="cart_count"></span> added in your cart
+        </button>
+    </div>
+</div>
+
 <!-- for menu categories -->
 <div class="container">
     <div class="container-fluid mt-5 mb-5 justify-content-center align-content-center rounded-5 shadow"
@@ -107,7 +120,7 @@
             <div class="category-row" id="curry-category">
                 <div class="row g-0 mt-3" id="curry-category">
                     {{#each curryItems}}
-                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -117,7 +130,15 @@
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                         <p class="card-text" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                        <button type="button"
+                                                class="btn d-flex justify-content-center mx-auto"
+                                                food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                id="order-button-{{this.mid}}"
+                                                button-action="add"
+                                                onclick="orderFood(this)"
+                                                style="background-color: #E38B29">Order
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +151,7 @@
             <div class="category-row" id="drink-category">
                 <div class="row g-0 mt-3">
                     {{#each drinkItems}}
-                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -140,7 +161,15 @@
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                         <p class="card-text" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                        <button type="button"
+                                                class="btn d-flex justify-content-center mx-auto"
+                                                food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                id="order-button-{{this.mid}}"
+                                                button-action="add"
+                                                onclick="orderFood(this)"
+                                                style="background-color: #E38B29">Order
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +182,7 @@
             <div class="category-row" id="fries-category">
                 <div class="row g-0 mt-3">
                     {{#each friesItems}}
-                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -163,7 +192,15 @@
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                         <p class="card-text" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                        <button type="button"
+                                                class="btn d-flex justify-content-center mx-auto"
+                                                food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                id="order-button-{{this.mid}}"
+                                                button-action="add"
+                                                onclick="orderFood(this)"
+                                                style="background-color: #E38B29">Order
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +213,7 @@
             <div class="category-row" id="salad-category">
                 <div class="row g-0 mt-3">
                     {{#each saladItems}}
-                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -186,7 +223,15 @@
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                         <p class="card-text" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                        <button type="button"
+                                                class="btn d-flex justify-content-center mx-auto"
+                                                food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                id="order-button-{{this.mid}}"
+                                                button-action="add"
+                                                onclick="orderFood(this)"
+                                                style="background-color: #E38B29">Order
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -199,7 +244,7 @@
             <div class="category-row" id="fast-category">
                 <div class="row g-0 mt-3">
                     {{#each fastItems}}
-                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -209,7 +254,15 @@
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                         <p class="card-text" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                        <button type="button"
+                                                class="btn d-flex justify-content-center mx-auto"
+                                                food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                id="order-button-{{this.mid}}"
+                                                button-action="add"
+                                                onclick="orderFood(this)"
+                                                style="background-color: #E38B29">Order
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +275,7 @@
             <div class="category-row" id="soup-category">
                 <div class="row g-0 mt-3">
                     {{#each soupItems}}
-                        <div class="con col-md-3 no-padding-col" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -232,7 +285,15 @@
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                         <p class="card-text" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                        <button type="button"
+                                                class="btn d-flex justify-content-center mx-auto"
+                                                food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                id="order-button-{{this.mid}}"
+                                                button-action="add"
+                                                onclick="orderFood(this)"
+                                                style="background-color: #E38B29">Order
+                                        </button>
                                     </div>
                                 </div>
                             </div>
