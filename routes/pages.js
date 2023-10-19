@@ -46,4 +46,6 @@ router.get('/contactus', index.isLoggedIn, (req, res) => {
     }
 });
 
+router.post('/addCart', index.isLoggedIn, index.cart);
+
 module.exports = router;

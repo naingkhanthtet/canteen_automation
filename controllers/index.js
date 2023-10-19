@@ -37,9 +37,6 @@ exports.login = async (req, res) => {
                         msg: 'email or password incorrect'
                     });
                 } else {
-                    // FIX HERE!!!!!!!!!!!!!!!!!!!!
-                    // FIX HERE!!!!!!!!!!!!!!!!!!!!
-                    // FIX HERE!!!!!!!!!!!!!!!!!!!!
                     const id = result[0].uid;
                     const token = jwt.sign({id: id}, process.env.JWT_SECRET, {
                         expiresIn: process.env.JWT_EXPIRES_IN,
@@ -108,16 +105,16 @@ exports.isLoggedIn = async (req, res, next) => {
             req.cookies.joes,
             process.env.JWT_SECRET
         );
+        // console.log(decode);
 
-        db.query("select * from users where uid=?",
-            [decode.id],
-            (err, result) => {
-                if (!result) {
-                    return next();
-                }
-                req.user = result[0];
+        db.query("select * from users where uid=?", [decode.id], (err, result) => {
+            if (!result || result.length === 0) {
+                console.log('user not found')
                 return next();
-            });
+            }
+            req.user = result[0];
+            return next();
+        });
     } else {
         next();
     }
@@ -158,6 +155,40 @@ exports.fastItems = async (req, res, next) => {
 
 exports.soupItems = async (req, res, next) => {
     fetchMenu('Soup', req, next);
+};
+
+exports.cart = async (req, res, next) => {
+    const {user_id, food_id, food_name, food_quantity, food_price, button_action} = req.body;
+    console.log(req.body);
+
+    if (button_action === "add") {
+        db.query("insert into Orders set ?", {
+            oid: '0',
+            uid: user_id,
+            mname: food_name,
+            mid: food_id,
+            quantity: food_quantity,
+            price: food_price
+        }, (err, result) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({success: false, msg: "Failed to add in the cart"});
+            } else {
+                return res.json({success: true, msg: 'Item added to cart'});
+            }
+        });
+    } else if (button_action === "remove") {
+        db.query("delete from Orders where mid=?", [food_id], (err, result) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({success: false, msg: "Failed to remove"});
+            } else {
+                return res.json({success: true, msg: "Item removed"});
+            }
+        })
+    } else {
+        res.status(401).json({success: false, msg: "What u looking for?"});
+    }
 };
 
 exports.logout = async (req, res) => {

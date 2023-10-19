@@ -40,12 +40,13 @@ insert into Menus(mname, mnote, quantity, price, mrole, imgUrl) values
     ('Rice tea salad', 'Essential for students', 10, 1500, 'Special', '/images/special/Rice Tea Leaf salad.jpeg'),
 --     curry
     ('Beef Curry', 'Tasty and spicy beef', 10, 2500, 'Curry', '/images/curry/Beef Curry.jpeg'),
-    ('Chicken Curry', 'for everyone! Sweet and sour', 10, 2500, 'Curry', '/images/special/Chicken curry.jpeg'),
-    ('Egg Curry', 'for everyone! Nutritious', 10, 2500, 'Curry', '/images/special/Egg curry.jpeg'),
-    ('Fish Curry', 'for soft meat lover', 10, 2500, 'Curry', '/images/special/Fish curry.jpeg'),
-    ('Goat Curry', 'Tasty and best aroma', 10, 2500, 'Curry', '/images/special/Goat curry.jpeg'),
-    ('Pork Curry', 'best pair with Rice', 10, 2500, 'Curry', '/images/special/Pork curry.jpeg'),
-    ('Rice', 'Essential for meal', 10, 500, 'Curry', '/images/special/Rice.jpeg'),
+    ('Chicken Curry', 'for everyone! Sweet and sour', 10, 2500, 'Curry', '/images/curry/Chicken curry.jpeg'),
+    ('Egg Curry', 'for everyone! Nutritious', 10, 2500, 'Curry', '/images/curry/Egg curry.jpeg'),
+    ('Fish Curry', 'for soft meat lover', 10, 2500, 'Curry', '/images/curry/Fish curry.jpeg'),
+    ('Goat Curry', 'Tasty and best aroma', 10, 2500, 'Curry', '/images/curry/Goat curry.jpeg'),
+    ('Pork Curry', 'best pair with Rice', 10, 2500, 'Curry', '/images/curry/Pork curry.jpeg'),
+    ('Rice', 'Essential for meal', 10, 500, 'Curry', '/images/curry/Rice.jpeg'),
+
 --     drinks
     ('Americano', 'For black coffee lovers', 10, 1500, 'Drink', '/images/drinks/Americano.jpeg'),
     ('Cappuccino', 'Any foam lovers?', 10, 1500, 'Drink', '/images/drinks/Cappuccino.jpeg'),
@@ -91,10 +92,11 @@ insert into Users(username, email, passwd, phone, batch) values
 create table Orders (
     oid INT AUTO_INCREMENT primary key,
     uid INT not null,
-    odate DATETIME not null, 
+    mname varchar(255) unique not null,
     mid INT not null,
     quantity INT not null,
     price INT not null,
     FOREIGN KEY (uid) REFERENCES Users(uid),
+    FOREIGN KEY (mname) REFERENCES Menus(mname),
     FOREIGN KEY (mid) REFERENCES Menus(mid)
-)
+);

@@ -20,13 +20,13 @@ db.connect(function(err) {
     else console.log('Mysql connected');
 });
 
+app.set('view engine', 'hbs');
 // app.use(cookieParser());
 app.use(cookieParser());
 app.use(express.urlencoded( {extended:false }));
 
-app.set('view engine', 'hbs');
-
 app.use(express.static(path.join(__dirname, './public')));
+app.use(express.json());
 
 const images = './images';
 app.locals.imageBasePath = images;

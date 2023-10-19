@@ -21,16 +21,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 
     <!-- for link JavaScript -->
-    <script src="/javascripts/header_footer.js" defer></script>
+    <script src="/javascripts/add_cart.js" defer></script>
 
     <title>Home</title>
 </head>
 <body>
-{{order_detail}}
+<div id="user-id" style="display: none">{{user.uid}}</div>
+<div id="add_cart"></div>
 <!-- body -->
-{{card_order}}
+{{> card_order}}
 <div class="background p-3 mb-2">
-
     <div class="header-1" style="margin-left: 1.5%; margin-right: 1.5%;">
         <div class="container-fluid mt-4 justify-content-center  align-content-center rounded-5 shadow"
              style="background-color: rgb(255, 255, 255); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
@@ -65,7 +65,6 @@
         </div>
     </div>
 
-
     <!-- special items -->
     <div class="special items">
         <div class="text-center" style=" margin-top: 2%; margin-bottom: 2%;">
@@ -73,6 +72,9 @@
             <h5 class="card-title" style="padding-top: 1%;"><b>Popular Items</b></h5>
         </div>
 
+        {{#if msg}}
+            <p>{{msg}}</p>
+        {{/if}}
         <!-- popular items -->
         <div class="container">
             <div class="container-fluid mt-5 justify-content-center d-flex align-content-center"
@@ -94,7 +96,15 @@
                                                        style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                                     <p class="card-price" style="font-size: 1rem;">{{this.price}}
                                                         MMK</p>
-                                                    <a href="#" class="btn" style="background-color: #E38B29">Order</a>
+                                                    <button type="button"
+                                                            class="btn d-flex justify-content-center mx-auto"
+                                                            food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                            food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                            id="order-button-{{this.mid}}"
+                                                            button-action="add"
+                                                            onclick="orderFood(this)"
+                                                            style="background-color: #E38B29">Order
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
