@@ -162,7 +162,6 @@ exports.cart = async (req, res) => {
 
     if (button_action === "add") {
         db.query("insert into Orders set ?", {
-            oid: '0',
             uid: user_id,
             mname: food_name,
             mid: food_id,
@@ -191,7 +190,7 @@ exports.cart = async (req, res) => {
 };
 
 exports.chkCart = async (req, res) => {
-    db.query("select mid, uid from Orders", (err, result) => {
+    db.query("select mid, mname, price, uid from Orders", (err, result) => {
         if (err) {
             res.status(500).json({error: "Database error"});
         } else {
@@ -211,6 +210,18 @@ exports.cartCount = async (req, res) => {
         }
     });
 };
+
+exports.removeIfZero = async (req, res) => {
+    const {itemId} = req.body;
+    db.query("delete from Orders where mid=?", [itemId], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({success: false, msg: "Failed to remove"});
+        } else {
+            return res.json({success: true, msg: "Item removed"});
+        }
+    })
+}
 
 exports.logout = async (req, res) => {
     res.cookie('joes', 'logout', {

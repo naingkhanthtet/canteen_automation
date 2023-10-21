@@ -1,7 +1,7 @@
 /* Larger than mobile */
 @media (min-width: 678px) {
   .footer {
-    font-size: 16px;
+    font-size: 13px;
   }
 
 }
@@ -19,7 +19,6 @@
     padding: 2em;
   }
 }
-
 
   .footer {
       background-color: #E38B29;

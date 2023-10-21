@@ -89,12 +89,25 @@ insert into Users(username, email, passwd, phone, batch) values
     ('may','may@email.com', 'May%!', '09234567890', 10),
     ('ye','ye@email.com', 'Ye%!', '09345678901', 10);
 
+
 create table Orders (
-    oid INT AUTO_INCREMENT unique primary key,
     uid INT not null,
     mname varchar(255) not null,
     mid INT not null,
     quantity INT not null,
+    price INT not null,
+    FOREIGN KEY (uid) REFERENCES Users(uid),
+    FOREIGN KEY (mname) REFERENCES Menus(mname),
+    FOREIGN KEY (mid) REFERENCES Menus(mid)
+);
+
+create table Ordered (
+    oid INT AUTO_INCREMENT unique primary key,
+    uid INT not null,
+    mname varchar(255) not null,
+    odate datetime not null,
+    quantity INT not null,
+    mid INT not null,
     price INT not null,
     FOREIGN KEY (uid) REFERENCES Users(uid),
     FOREIGN KEY (mname) REFERENCES Menus(mname),
