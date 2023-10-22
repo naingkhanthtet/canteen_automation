@@ -104,12 +104,21 @@ create table Orders (
 create table Ordered (
     oid INT AUTO_INCREMENT unique primary key,
     uid INT not null,
+    ubatch INT not null,
+    uname varchar(255) not null,
     mname varchar(255) not null,
     odate datetime not null,
     quantity INT not null,
-    mid INT not null,
-    price INT not null,
-    FOREIGN KEY (uid) REFERENCES Users(uid),
-    FOREIGN KEY (mname) REFERENCES Menus(mname),
-    FOREIGN KEY (mid) REFERENCES Menus(mid)
+    price INT not null
+);
+
+create table OrderHistory (
+    oid INT not null,
+    uid INT not null,
+    ubatch INT not null,
+    uname varchar(255) not null,
+    mname varchar(255) not null,
+    odate datetime not null,
+    quantity INT not null,
+    price INT not null
 );

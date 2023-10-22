@@ -90,7 +90,7 @@ exports.register = (req, res) => {
             urole: 'Client'
         }, (err, result) => {
             if (err) {
-                throw err;
+                console.error(err);
             } else {
                 // console.log(result);
                 return res.render('register', {msg: "user registration success"});
@@ -157,6 +157,31 @@ exports.soupItems = async (req, res, next) => {
     fetchMenu('Soup', req, next);
 };
 
+exports.submitOrder = async (req, res) => {
+    const {uid, food_name, date, food_quantity, food_price, final_price} = req.body;
+    db.query("insert into Ordered (oid, uid, ubatch, uname, mname, odate, quantity, price) values (?, ?, (select batch from Users where uid=?), (select username from Users where uid=?), ?, ?, ?, ?);",
+        [0, uid, uid, uid, food_name, date, food_quantity, food_price],
+        (err, result) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({success: false, msg: "Failed to submit"});
+            } else {
+                return res.json({success: true, msg: 'Item added to cart'});
+            }
+        });
+};
+
+exports.deleteOrdersAfterConfirmed = async (req, res, next) => {
+    const {user_id} = req.body;
+    db.query("delete from Orders where uid=?", [user_id], (err, result) => {
+        if (err) {
+            console.error(err);
+        } else {
+            return res.json({success: true, msg: 'Deleted the cart orders'});
+        }
+    });
+}
+
 exports.cart = async (req, res) => {
     const {user_id, food_id, food_name, food_quantity, food_price, button_action} = req.body;
 
@@ -221,6 +246,36 @@ exports.removeIfZero = async (req, res) => {
             return res.json({success: true, msg: "Item removed"});
         }
     })
+}
+
+exports.returnVoucher = async (req, res, next) => {
+    const user_id = req.params.userId;
+    db.query("select * from Ordered where uid=?", [user_id], (err, result) => {
+        if (err) {
+            console.error(err);
+        } else {
+            req.returnedVoucher = result;
+            req.singleData = result[result.length - 1];
+            req.totalPrice = result.reduce((total, item) => total + item.price, 0);
+            next();
+        }
+    });
+}
+
+exports.addToOrderHistory = async (req, res) => {
+    const user_id = req.params.userId;
+    db.query("insert into OrderHistory select * from Ordered where uid=?", [user_id], (err, result) => {
+        if (err) {
+            console.error(err);
+        } else {
+            res.status(200).redirect("/home");
+            db.query("delete from Ordered where uid=?", [user_id], (err, result) => {
+                if (err) {
+                    console.error(err);
+                }
+            });
+        }
+    });
 }
 
 exports.logout = async (req, res) => {

@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const index = require('../controllers/index');
+const {returnVoucher} = require("../controllers");
 
+// PAGES
 router.get(['/', '/login'], index.loginPage);
 
 router.get('/register', index.registerPage);
@@ -46,10 +48,28 @@ router.get('/contactus', index.isLoggedIn, (req, res) => {
     }
 });
 
+router.get('/voucherPage/:userId', index.isLoggedIn, index.returnVoucher, (req, res) => {
+    if (req.user) {
+        res.render('voucher', {
+            user: req.user,
+            returnedVoucher: req.returnedVoucher,
+            singleData: req.singleData,
+            totalPrice: req.totalPrice
+        });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+router.get('/addToOrderHistory/:userId', index.isLoggedIn, index.addToOrderHistory);
+
+// CART
+router.post('/delCartOrders', index.isLoggedIn, index.deleteOrdersAfterConfirmed);
 router.post('/addCart', index.isLoggedIn, index.cart);
 router.get('/checkCart', index.isLoggedIn, index.chkCart);
 router.get('/cartCount/:userId', index.isLoggedIn, index.cartCount);
 router.get('/inCart', index.isLoggedIn, index.chkCart);
 router.post('/removeIfZero', index.isLoggedIn, index.removeIfZero);
+router.post('/submitOrder', index.isLoggedIn, index.submitOrder);
 
 module.exports = router;

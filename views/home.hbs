@@ -21,8 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 
     <!-- for link JavaScript -->
-    <script src="/javascripts/add_cart.js" defer></script>
-    <script src="/javascripts/order_detail.js" defer></script>
+    <script src="/javascripts/cart.js" defer></script>
 
     <title>Home</title>
 </head>
@@ -71,10 +70,9 @@
                         <!-- for payment type radio button -->
                         <div class="col-md-6">
                             <h3>Choose an Option:</h3>
-
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="exampleRadio" id="radioOption1"
-                                       value="option1" onclick="disableDropdown()">
+                                       value="option1" onclick="disableDropdown()" checked>
                                 <label class="form-check-label" for="radioOption1">Pay after Pick Up</label>
                             </div>
 
@@ -83,22 +81,18 @@
                                        value="option2" onclick="enableDropdown()">
                                 <label class="form-check-label" for="radioOption2">Pre Pay</label>
                             </div>
-
-
                         </div>
 
                         <!-- Horizontal line with reduced width -->
-                        <hr style="border-top: 3px solid black; margin-top: 20px; margin-bottom: 20px; width: 85%;">
+                        <hr style="border-top: 3px solid black; margin: 20px 20px 20px 20px; width: 85%;">
 
                         <!-- Total amount -->
                         <div class="row" style="margin-top: 5%;">
-
                             <div class="col" style="font-size: 35px; opacity: 70%;">
                                 <p> Total Amount:</p>
                             </div>
-
                             <div class="col" style="font-size: 35px; margin-left: 2%;">
-                                <p>6000 MMK</p>
+                                <div id="final-price" class="final-price"></div>
                             </div>
                         </div>
                     </div>
@@ -111,9 +105,9 @@
                             style="background-color: red; width:200px; height:50px; border:1px solid white; color: white; margin-right: 50px;">
                         Cancel
                     </button>
-                    <button type="button" class="button_ho shadow rounded-3"
-                            style="background-color: green; color: white; width:200px; height:50px ; border:1px solid white;">
-                        Confirm
+                    <button id="order-confirm" type="submit" class="button_ho shadow rounded-3"
+                            style="background-color: green; color: white; width:200px; height:50px ; border:1px solid white;" onclick="submitOrder()">
+                        Order
                     </button>
                 </div>
 
