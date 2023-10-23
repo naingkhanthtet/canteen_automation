@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const index = require('../controllers/index');
-const {returnVoucher} = require("../controllers");
+// const {returnVoucher} = require("../controllers");
 
-// PAGES
+// Pages
 router.get(['/', '/login'], index.loginPage);
-
 router.get('/register', index.registerPage);
-
 router.get('/home', index.isLoggedIn, index.specialItems, (req, res) => {
     if (req.user) {
         res.render('home', {user: req.user, specials: req.Special});
@@ -15,7 +13,6 @@ router.get('/home', index.isLoggedIn, index.specialItems, (req, res) => {
         res.redirect('/login');
     }
 });
-
 router.get('/menu', index.isLoggedIn, index.curryItems, index.drinkItems, index.friesItems, index.saladItems, index.fastItems, index.soupItems, (req, res) => {
     if (req.user) {
         res.render('menu_f_user', {
@@ -31,7 +28,6 @@ router.get('/menu', index.isLoggedIn, index.curryItems, index.drinkItems, index.
         res.redirect('/login');
     }
 });
-
 router.get('/aboutus', index.isLoggedIn, (req, res) => {
     if (req.user) {
         res.render('about_us', {user: req.user});
@@ -39,7 +35,6 @@ router.get('/aboutus', index.isLoggedIn, (req, res) => {
         res.redirect('/login');
     }
 });
-
 router.get('/contactus', index.isLoggedIn, (req, res) => {
     if (req.user) {
         res.render('contact_us', {user: req.user});
@@ -47,21 +42,34 @@ router.get('/contactus', index.isLoggedIn, (req, res) => {
         res.redirect('/login');
     }
 });
-
 router.get('/voucherPage/:userId', index.isLoggedIn, index.returnVoucher, (req, res) => {
     if (req.user) {
         res.render('voucher', {
-            user: req.user,
-            returnedVoucher: req.returnedVoucher,
-            singleData: req.singleData,
-            totalPrice: req.totalPrice
+            user: req.user, returnedVoucher: req.returnedVoucher, singleData: req.singleData, totalPrice: req.totalPrice
         });
     } else {
         res.redirect('/login');
     }
 });
-
 router.get('/addToOrderHistory/:userId', index.isLoggedIn, index.addToOrderHistory);
+
+
+// Admin pages
+router.get('/viewItems', index.isLoggedIn, index.isAdmin, (req, res) => {
+    res.render('admin/menu_view')
+});
+router.get('/viewClients', index.isLoggedIn, index.isAdmin, (req, res) => {
+    res.render('admin/user_view')
+});
+router.get('/viewClientOrders', index.isLoggedIn, index.isAdmin, (req, res) => {
+    res.render('admin/order_view')
+});
+router.get('/addItem', index.isLoggedIn, index.isAdmin, (req, res) => {
+    res.render('admin/menu_add')
+});
+router.get('/addUser', index.isLoggedIn, index.isAdmin, (req, res) => {
+    res.render('admin/user_add')
+});
 
 // CART
 router.post('/delCartOrders', index.isLoggedIn, index.deleteOrdersAfterConfirmed);

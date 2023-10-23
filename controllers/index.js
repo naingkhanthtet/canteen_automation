@@ -18,6 +18,31 @@ exports.registerPage = (req, res) => {
     res.render('register');
 };
 
+exports.isAdmin = (req, res, next) => {
+    if (req.user.urole === "Admin") {
+        return next();
+    } else {
+        return res.render('error', {
+            msgHeader: 'Unauthorized',
+            msg: 'You do not have permission to access this page.'
+        });
+    }
+};
+
+function generateToken(res, uid, page) {
+    const token = jwt.sign({id: uid}, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+    });
+    const cookieOptions = {
+        expires:
+            new Date(
+                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+            ), httpOnly: true,
+    };
+    res.cookie('joes', token, cookieOptions);
+    res.status(200).redirect(page);
+}
+
 exports.login = async (req, res) => {
     try {
         const {email, password} = req.body;
@@ -37,22 +62,15 @@ exports.login = async (req, res) => {
                         msg: 'email or password incorrect'
                     });
                 } else {
-                    const id = result[0].uid;
-                    const token = jwt.sign({id: id}, process.env.JWT_SECRET, {
-                        expiresIn: process.env.JWT_EXPIRES_IN,
-                    });
-                    // console.log('token is ' + token);
-                    const cookieOptions = {
-                        expires:
-                            new Date(
-                                Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-                            ), httpOnly: true,
-                    };
-                    res.cookie('joes', token, cookieOptions);
-                    res.status(200).redirect('/home');
+                    if (result[0].urole === "Admin") {
+                        generateToken(res, result[0].uid, '/viewItems');
+                    } else {
+                        generateToken(res, result[0].uid, '/home');
+                    }
+
                 }
             }
-        })
+        });
     } catch (err) {
         console.log(err);
     }
@@ -105,7 +123,6 @@ exports.isLoggedIn = async (req, res, next) => {
             req.cookies.joes,
             process.env.JWT_SECRET
         );
-        // console.log(decode);
 
         db.query("select * from users where uid=?", [decode.id], (err, result) => {
             if (!result || result.length === 0) {

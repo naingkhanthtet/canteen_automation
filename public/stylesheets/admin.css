@@ -1,0 +1,151 @@
+:root{
+    --offcanvas-width: 70px;
+    --topNaverHight: 57px;
+
+}
+
+#offcanvasExample{
+    width: var(--offcanvas-width);
+}
+
+@media (min-width: 992px) {
+    body{
+        overflow: auto !important;
+    }
+    .offcanvas-backdrop::before{
+        display: none;
+    }
+    #offcanvasExample{
+        transform: none;
+        visibility: visible !important;
+        top:var(--topNaverHight);
+        height: calc(100% - var(--topNaverHight));
+    }
+}
+main{
+    margin-left: var(--offcanvas-width);
+}
+
+/* .sidebar{
+    width: 60px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: aliceblue;
+    transition: ease-in-out 0.3s;
+    overflow: hidden;
+}
+
+.sidebar:hover{
+    width: 200px;
+}
+
+.sidebar:hover > .item > .text{
+    opacity: 1;
+}
+
+hr {
+    height: 1px;
+    color: #919191;
+    margin: 15px 0;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.item .icon{
+    width: 40px;
+    height: 35px;
+    flex-shrink: 0;
+    fill: #424242;
+}
+
+.item .text {
+    opacity: 0;
+    transition: ease-in-out 0.3s;
+    transition-delay: .2s;
+    margin-left: 15px;
+    white-space: nowrap;
+} */
+
+table, th, td{
+    padding: 1rem;
+    border-collapse: collapse;
+}
+table{
+    width: 82vw;
+    height: 50vh;
+    background-color:white;
+    overflow: auto;
+}
+
+.table_body{
+    width: 95%;
+    max-height: calc(100% - .8rem); 
+    margin: 4rem auto;
+    overflow: auto;
+    border-radius: 10px;
+    /* border: 1px solid  rgb(253, 238, 220);; */
+}
+
+.table_body::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.table_body::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: rgb(180, 172, 164);
+    visibility: hidden;
+}
+
+.table_body:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+}
+
+thead th{
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* background-color:  rgb(253, 238, 220);; */
+}
+
+tbody tr:nth-child(even){
+    background-color: #fff6;
+}
+
+tbody tr:hover{
+    background-color: #fff6;
+}
+
+
+.icon-label {
+    position: relative;
+    display: inline-block;
+}
+
+.icon-label i {
+    width: 32px;
+    height: 32px;
+}
+
+.tooltip {
+    width: 125px;
+    visibility: hidden;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    top: 100%; /* Position it below the icon */
+    left: 0;   /* Align it with the left edge of the icon */
+    transition: opacity 0.3s;
+    z-index: 1; /* Ensure the tooltip appears on top */
+}
+
+.icon-label:hover .tooltip {
+    visibility: visible;
+}
