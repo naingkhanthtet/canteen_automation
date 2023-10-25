@@ -106,11 +106,11 @@
                         Cancel
                     </button>
                     <button id="order-confirm" type="submit" class="button_ho shadow rounded-3"
-                            style="background-color: green; color: white; width:200px; height:50px ; border:1px solid white;" onclick="submitOrder()">
+                            style="background-color: green; color: white; width:200px; height:50px ; border:1px solid white;"
+                            onclick="submitOrder()">
                         Order
                     </button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -184,15 +184,23 @@
                                                        style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
                                                     <p class="card-price" style="font-size: 1rem;">{{this.price}}
                                                         MMK</p>
-                                                    <button type="button"
-                                                            class="btn d-flex justify-content-center mx-auto"
-                                                            food-name="{{this.mname}}" food-price="{{this.price}}"
-                                                            food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
-                                                            id="order-button-{{this.mid}}"
-                                                            button-action="add"
-                                                            onclick="orderFood(this)"
-                                                            style="background-color: #E38B29">Order
-                                                    </button>
+                                                    {{#if this.quantity}}
+                                                        <button type="button"
+                                                                class="btn d-flex justify-content-center mx-auto"
+                                                                food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                                id="order-button-{{this.mid}}"
+                                                                button-action="add"
+                                                                onclick="orderFood(this)"
+                                                                style="background-color: #E38B29">Order
+                                                        </button>
+                                                    {{else}}
+                                                        <button type="button"
+                                                                class="btn d-flex justify-content-center mx-auto"
+                                                                disabled
+                                                                style="background-color: #E38B29">Out of stock
+                                                        </button>
+                                                    {{/if}}
                                                 </div>
                                             </div>
                                         </div>

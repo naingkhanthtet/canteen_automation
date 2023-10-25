@@ -1,0 +1,88 @@
+/* Style the tab */
+.tab {
+    float: left;
+    border-radius: 0 0 0 28px ;
+    border: 1px solid rgb(241, 166, 97);
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 300px;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: rgb(255, 216, 169);
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    background-color: rgb(241, 166, 97);
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+    padding: 0px 12px;
+    /* border: 1px solid #ccc; */
+    border-radius: 28px;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+  }
+
+/* for image hover effect */
+.img-hover:hover {
+    transition: all 0.5s;
+    transform: scale(1.05); 
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.7); 
+  }
+
+
+/* for pop up box */
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  text-align: center;
+}
+
+.popup-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid rgb(241, 166, 97);
+  border-radius: 5px;
+  max-width: 50%;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}

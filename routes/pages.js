@@ -43,7 +43,7 @@ router.get('/contactus', index.isLoggedIn, (req, res) => {
         res.redirect('/login');
     }
 });
-router.get('/voucherPage/:userId', index.isLoggedIn, index.returnVoucher, (req, res) => {
+router.get('/voucherPage/:date', index.isLoggedIn, index.returnVoucher, (req, res) => {
     if (req.user) {
         res.render('voucher', {
             user: req.user, returnedVoucher: req.returnedVoucher, singleData: req.singleData, totalPrice: req.totalPrice

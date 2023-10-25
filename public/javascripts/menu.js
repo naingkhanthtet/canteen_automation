@@ -44,18 +44,43 @@ function changeCategory(category) {
 
 changeCategory('drink');
 
-function searchItem () {
+function searchItem() {
     const searchTerm = document.getElementById('searchInput');
     const filter = searchTerm.value.toLowerCase();
     const currentData = document.querySelectorAll('.category-row .con');
 
     currentData.forEach(each => {
         const name = each.querySelector('.card-title b').textContent.toLowerCase();
+        const price = each.querySelector('.card-price').textContent.toLowerCase();
 
-        if (name.includes(filter)) {
+        if (name.includes(filter) || price.includes(filter)) {
             each.style.display = 'block';
         } else {
             each.style.display = 'none';
         }
     });
 }
+
+function showMore(category) {
+    const items = document.querySelectorAll(`.${category}`);
+    const hidden = Array.from(items).filter(item => item.style.display === 'none');
+
+    hidden.slice(0, 8).forEach(item => {
+        item.style.display = 'block';
+    })
+
+    if (hidden.length <= 8) {
+        this.style.display = 'none';
+    }
+}
+
+
+// Hardcoding :(
+const categories = ['Drink', 'Curry', 'Fries', 'Salad', 'Fast', 'Soup', 'Special'];
+categories.forEach((category) => {
+    document.querySelectorAll(`.${category}`).forEach((item, index) => {
+        if (index >= 8) {
+            item.style.display = 'none';
+        }
+    });
+})

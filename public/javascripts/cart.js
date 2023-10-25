@@ -103,7 +103,6 @@ setInterval(cartCount, 1000);
 const cart_button_container = document.getElementById("cart-button-container");
 let addedInCart = new Set();
 
-
 // this a big function
 function inCart() {
     fetch('/inCart')
@@ -145,6 +144,14 @@ function inCart() {
                         </div>
                     `;
                     addedInCart.add(item.mid);
+                }
+
+                const order_button = document.getElementById('order-confirm');
+                // if the content not exists, disable order button
+                if (cart_button_container.innerText.trim() === '') {
+                    order_button.setAttribute('disabled', 'true');
+                } else {
+                    order_button.removeAttribute('disabled');
                 }
 
                 // update price for each item with +, - buttons
@@ -201,8 +208,6 @@ function deleteOrdersAfterConfirmed() {
         .catch((error) => {
             console.error('Removing the cart orders have problem', error);
         });
-    // window.location.href = '/viewVoucher';
-    window.location.href = `/voucherPage/${user_id}`;
 }
 
 // add cart items to new database table if 'Order' confirmed
@@ -236,16 +241,40 @@ function submitOrder() {
             .then((data) => {
                 if (data.success) {
                     console.log(data.msg);
+                    // this will delete the cart database
+                    deleteOrdersAfterConfirmed();
+                    // user will see the voucher of recent purchase with ordered date.
+                    addToOrderHistory(uid, date);
                 } else {
-                    console.error("Request failed", data.msg);
+                    alert(data.msg);
                 }
             })
             .catch((error) => {
                 console.error('Order submission error', error);
             });
     });
+}
 
-    deleteOrdersAfterConfirmed();
+
+function addToOrderHistory(uid, date) {
+    fetch(`/addToOrderHistory/${uid}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.success) {
+                console.log(data.msg);
+            } else {
+                console.error("Request failed", data.msg);
+            }
+        })
+        .catch((error) => {
+            console.error('Fetching the add to order history has problem', error);
+        });
+    window.location.href = `/voucherPage/${date}`;
 }
 
 

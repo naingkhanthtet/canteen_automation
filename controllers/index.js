@@ -261,16 +261,36 @@ exports.soupItems = async (req, res, next) => {
 
 exports.submitOrder = async (req, res) => {
     const {uid, food_name, date, food_quantity, food_price, final_price} = req.body;
-    db.query("insert into Ordered (oid, uid, ubatch, uname, mname, odate, quantity, price) values (?, ?, (select batch from Users where uid=?), (select username from Users where uid=?), ?, ?, ?, ?);",
-        [0, uid, uid, uid, food_name, date, food_quantity, food_price],
-        (err, result) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({success: false, msg: "Failed to submit"});
-            } else {
-                return res.json({success: true, msg: 'Item added to cart'});
+    db.query("select mname, quantity from Menus where mname=?", [food_name], (err, rows) => {
+        if (err) {
+            return res.status(500).json({success: false, msg: "Failed to submit"});
+        }
+        if (rows.length === 1) {
+            const current_quantity = rows[0].quantity;
+            const fname = rows[0].mname;
+            if (current_quantity < food_quantity) {
+                return res.status(400).json({success: false, msg: `Not enough ${fname} available`});
             }
-        });
+
+            const set_new_quantity = current_quantity - food_quantity;
+            db.query("update Menus set quantity=? where mname=?", [set_new_quantity, food_name], (err, update) => {
+                if (err) {
+                    return res.status(500).json({success: false, msg: "Failed to set new quantity into menu database"});
+                }
+
+                db.query("insert into Ordered (oid, uid, ubatch, uname, mname, odate, quantity, price) values (?, ?, (select batch from Users where uid=?), (select username from Users where uid=?), ?, ?, ?, ?);",
+                    [0, uid, uid, uid, food_name, date, food_quantity, food_price],
+                    (err, result) => {
+                        if (err) {
+                            console.error(err);
+                            return res.status(500).json({success: false, msg: "Failed to submit"});
+                        } else {
+                            return res.json({success: true, msg: 'Item added to cart'});
+                        }
+                    });
+            })
+        }
+    });
 };
 
 exports.deleteOrdersAfterConfirmed = async (req, res, next) => {
@@ -351,8 +371,8 @@ exports.removeIfZero = async (req, res) => {
 }
 
 exports.returnVoucher = async (req, res, next) => {
-    const user_id = req.params.userId;
-    db.query("select * from Ordered where uid=?", [user_id], (err, result) => {
+    const order_date = req.params.date;
+    db.query("select * from OrderHistory where odate=?", [order_date], (err, result) => {
         if (err) {
             console.error(err);
         } else {
@@ -368,12 +388,12 @@ exports.addToOrderHistory = async (req, res) => {
     const user_id = req.params.userId;
     db.query("insert into OrderHistory select * from Ordered where uid=?", [user_id], (err, result) => {
         if (err) {
-            console.error(err);
+            return res.status(500).json({success: false, msg: "Failed to insert into OrderHistory database"});
         } else {
-            res.status(200).redirect("/home");
+            res.redirect('/')
             db.query("delete from Ordered where uid=?", [user_id], (err, result) => {
                 if (err) {
-                    console.error(err);
+                    return res.status(500).json({success: false, msg: "Failed to remove from ordered database"});
                 }
             });
         }

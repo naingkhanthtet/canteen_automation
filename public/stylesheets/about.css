@@ -1,0 +1,46 @@
+/* Styles for the lightbox */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 356px;
+    height: 534px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    display: block;
+    margin: 0 auto;
+    max-width: 35%;
+    max-height: 100%;
+    /* width: 356px;
+    height: 534px; */
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Style for the anchor tags (images) */
+.lightbox {
+    display: block;
+}
+
+
+
+/* for image hover effect */
+.img-hover:hover {
+    transition: all 0.5s;
+    transform: scale(1.05); 
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.7); 
+  }

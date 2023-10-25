@@ -25,7 +25,7 @@ create table Menus (
     mid INT AUTO_INCREMENT primary key,
     mname varchar(255) unique not null,
     mnote varchar(255) not null,
-    quantity INT not null,
+    quantity INT not null CHECK (quantity >= 0),
     price INT not null,
     mrole ENUM('Curry', 'Drink', 'Fries', 'Salad', 'Fast', 'Soup', 'Special') not null,
     imgUrl varchar(255) not null

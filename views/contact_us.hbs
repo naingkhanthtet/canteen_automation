@@ -3,69 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+    <!-- for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+    <!-- Bootstrupt CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+    <!-- for CSS -->
+    <link rel="stylesheet" href="/stylesheets/contact.css">
+    <!-- icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <script src="/javascripts/contact.js" defer></script>
 
+    <title>Contact Us</title>
+    <link rel="icon" href="/images/logo.png" type="img/png">
 </head>
-{{>header_test}}
 <body style="background-color: rgb(253, 238, 220)">
+{{> header_test}}
 <!--For nav start-->
 <div id="header_nav"></div>
 <!--For nav end-->
 <section id="header">
+
+    <div class="about-1" style="margin-left: 1.5%; margin-right: 1.5%;">
+        <div class="container-fluid mt-5 justify-content-center d-flex align-content-center rounded-5 shadow"
+             style="background-color: white; margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
+            <div class="header_about mt-5" style="margin: 100px;">
+                <p class="text-center text-uppercase" style="opacity: 50%;">Who we are</p>
+                <h3 class="fw-bold text-center" style="margin-bottom: 5%;">How can we help?</h3>
+                <div class="row">
+                    <div class="col-md-3 mb-5 mt-5 text-center">
+                        <img src="/images/Order Cancel.png"
+                             style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
+                             class="rounded-circle mb-3 img-hover" alt=""
+                             onclick="showPopup('Call +959698686066, and you can cancel order within 15 Minutes.')">
+                        <p class="text-center">How to cancel order?</p>
+                    </div>
+                    <div class="col-md-3 mb-5 mt-5 text-center">
+                        <img src="/images/forget_pwd.jpeg"
+                             style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
+                             class="rounded-circle mb-3 img-hover" alt=""
+                             onclick="showPopup('If you forget your account Password, please contact the Admin.')">
+                        <p class="text-center">Forget Password?</p>
+                    </div>
+                    <div class="col-md-3 mb-5 mt-5 text-center">
+                        <img src="/images/contact_ad.png"
+                             style="width: 30%; max-height: 300px; border: 1px solid rgb(241, 166, 97);"
+                             class="rounded-circle mb-3 img-hover" alt=""
+                             onclick="showPopup('Admin can contact accroding to this phone number, +959794338543.')">
+                        <p class="text-center">How to contact admin?</p>
+                    </div>
+                    <div class="col-md-3 mb-5 mt-5 text-center">
+                        <img src="/images/payment.png"
+                             style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
+                             class="rounded-circle mb-3 img-hover" alt=""
+                             onclick="showPopup('User can pay both Cash and Mobile Banking as KBz Pya, AYA Pya, Wave Pay')">
+                        <p class="text-center">Which type of payment are Available?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <p id="popup-text"></p>
+        </div>
+    </div>
+
+
     <div class="container">
-        <div class="container-fluid mt-2 justify-content-center d-flex align-content-center rounded-5 "
-             style="margin-right: 20px;">
-            <div class="row mb-5">
-                <div class="col-lg-12">
-                    <div class="header_about m-5" style="margin: 100px;">
-                        <p class="text-center text-uppercase">Contact</p>
-                        <h3 class="fw-bold text-center">Get in touch with us</h3>
+        <div class="row m-5">
+            <div class="col-md-6">
+                <div class="row">
+
+
+                    <div class="col-lg-12">
+                        <div class="header_about m-5" style="margin: 100px;">
+                            <p class="text-center text-uppercase" style="opacity: 50%;">Contact</p>
+                            <h3 class="fw-bold text-center">Get in touch with us</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 mb-3">
+                        <div class="card text-center p-4 rounded-4 shadow"
+                             style="border: 1px solid rgb(241, 166, 97); height: 100%;">
+                            <div class="mt-2">
+                                <i class="fa-solid fa-location-dot fs-3"
+                                   style="color: #000000; margin-bottom: 10%;"></i>
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 style="margin-bottom: 10%; font-size: 35px;"><b>Address</b></h3>
+                                <p class="card-text" style="opacity: 50%;">No.205, Pyi Road</p>
+                                <p class="card-text" style="opacity: 50%;">Hleadan, Yangon</p>
+                                <p class="card-text" style="opacity: 50%;">Myanmar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 mb-3">
+                        <div class="card text-center p-4 rounded-4 shadow"
+                             style="border: 1px solid rgb(241, 166, 97); height: 100%;">
+                            <div class="mt-2">
+                                <i class="fa-solid fa-phone fs-3" style="color: #080808; margin-bottom: 10%;"></i>
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 style="margin-bottom: 10%; font-size: 35px;"><b>Call Us</b></h3>
+                                <p class="card-text" style="opacity: 50%;">+959698686066</p>
+                                <p class="card-text" style="opacity: 50%;">+959794338543</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-3">
-                    <div class="card text-center p-4 rounded-4 shadow"
-                         style="border: 1px solid rgb(241, 166, 97); height:100%">
-                        <div class="mt-2">
-                            <i class="fa-solid fa-location-dot fs-3" style="color: #000000;"></i>
+                <div class="row" style="margin-top: 5%; margin-bottom: 5%;">
+                    <div class="col-sm-6 mb-3">
+                        <div class="card text-center p-4 rounded-4 shadow"
+                             style="border: 1px solid rgb(241, 166, 97); height: 100%;">
+                            <div class="mt-2">
+                                <i class="fa-solid fa-clock fs-3" style="color: #000000; margin-bottom: 10%;"></i>
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 style="margin-bottom: 10%; font-size:28px;"><b>Opening Hour</b></h3>
+                                <p class="card-text" style="opacity: 50%;">Monday-Friday</p>
+                                <p class="card-text" style="opacity: 50%;">09:00 am to 04:30 pm</p>
+                                <p class="card-text" style="opacity: 50%;">Saturday</p>
+                                <p class="card-text" style="opacity: 50%;">09:00 am to 3:00 pm</p>
+                            </div>
                         </div>
-                        <div class="card-body text-center">
-                            <p class="card-text">No.205, Pyi Road</p>
-                            <p class="card-text">Hleadan, Yangon</p>
-                            <p class="card-text">Myanmar</p>
+                    </div>
+
+                    <div class="col-sm-6 mb-3">
+                        <div class="card text-center p-4 rounded-4 shadow"
+                             style="border: 1px solid rgb(241, 166, 97); height: 100%;">
+                            <div class="mt-2">
+                                <i class="fa-solid fa-envelope fs-3" style="color: #080808; margin-bottom: 10%;"></i>
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 style="margin-bottom: 15%; font-size: 35px;"><b>Email Us</b></h3>
+                                <p class="card-text" style="opacity: 50%;">n@icloud.com</p>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-4 mb-3">
-                    <div class="card text-center p-4 rounded-4 shadow"
-                         style="border: 1px solid rgb(241, 166, 97); height:100%">
-                        <div class="mt-2">
-                            <i class="fa-solid fa-phone fs-3" style="color: #080808;"></i>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text">+959698686066</p>
-                            <p class="card-text">+959794338543</p>
-                        </div>
+            <!-- Feedback Form -->
+            <div class="col-md-6 p-5">
+                <div class="container-fluid rounded-5 shadow mt-5 mb-5"
+                     style="background-color: rgb(255, 216, 169); margin-left: 20px; border: 1px solid rgb(241, 166, 97);">
+
+                    <div class="header_about" style="margin-bottom: 50px; margin-top: 50px;">
+                        <h3 class="fw-bold text-center">Text Me</h3>
                     </div>
-                </div>
 
-                <div class="col-md-4 mb-3">
-                    <div class="card text-center p-4 rounded-4 shadow"
-                         style="border: 1px solid rgb(241, 166, 97);height:100%">
-                        <div class="mt-2">
-                            <i class="fa-solid fa-clock fs-3" style="color: #000000;"></i>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text">Monday-Friday</p>
-                            <p class="card-text">09:00 am to 04:30 pm</p>
-                            <p class="card-text">Saturday</p>
-                            <p class="card-text">09:00 am to 3:00 pm</p>
+                    <p style="margin-left: 10%; margin-top: 15%; font-size: 20px; ">You can leave Message</p>
+                    <p style="margin-left: 55%; margin-top: 3%; font-size: 20px; ">if you have...</p>
+                    <p style="text-align: center; margin-top: 15%; font-size: 15px; opacity: 50%; ">Admin will contact
+                        you soon</p>
+                    <div class="for_body">
+                        <form class="rounded-circle" style="margin-top: 10%;">
+                            <textarea class="form-control" id="suggestion" rows="7"
+                                      placeholder="Enter Your Suggestion...."
+                                      style="border: 1px solid rgb(241, 166, 97); width: 100%; height: 310px;"></textarea>
+                        </form>
+                        <div class="footer4 justify-content-center d-flex align-content-center mt-4 mb-5">
+                            <div style="margin-right: 30px;">
+                                <button type="button" class="shadow rounded-5" data-bs-dismiss="modal"
+                                        style="background-color: red; width: 120px; height: 40px; border: 1px solid white">
+                                    Cancel
+                                </button>
+                            </div>
+                            <div style="margin-left: 30px;">
+                                <button type="button" class="shadow rounded-5"
+                                        style="background-color: green; width: 120px; height: 40px; border: 1px solid white">
+                                    Send
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,62 +195,61 @@
 </section>
 
 <section id="body">
+
+
     <div class="container">
-        <div class="container-fluid mt-2 justify-content-center d-flex align-content-center rounded-5 shadow mt-5 mb-5"
-             style="background-color: rgb(255, 216, 169); margin-right: 20px; border: 1px solid rgb(241, 166, 97)">
-            <div class="row mb-5">
-                <div class="col-lg-12">
-                    <div class="header_about mt-5" style="margin: 100px;">
-                        <h3 class="fw-bold text-center">Any Sugesstion For Our Business</h3>
-                    </div>
-                </div>
 
-                <!-- Add responsive content for the body section here -->
-                <div class="col-md-5">
-                    <div class="for_body m-3">
-                        <!-- Your login form goes here -->
-                        <form class="m-4 rounded-circle">
-                            <div class="mb-5" style="color: grey">
-                                <input type="email" class="form-control rounded-5 shadow" id="floatingInput"
-                                       placeholder="Enter your Email Address"
-                                       style="border:1px solid rgb(241, 166, 97);">
 
-                            </div>
-                            <div class="mb-5" style="color: grey">
-                                <input type="password" class="form-control rounded-5 shadow" id="floatingPassword"
-                                       placeholder="Enter Your Password" style="border:1px solid rgb(241, 166, 97);">
-                            </div>
-                            <div class="mb-5" style="color: grey">
-                                <input type="email" class="form-control rounded-5 shadow" id="floatingInput"
-                                       placeholder="Enter your Email Address"
-                                       style="border:1px solid rgb(241, 166, 97);">
+        <div class="contact-1 mt-5 shadow rounded-bottom-5"
+             style="margin-left: 1.5%; margin-right: 1.5%; border: 1px solid rgb(241, 166, 97); border-radius: 28px; background-color: rgb(255, 216, 169); margin-bottom: 45px;">
+            <!-- <div class="container-fluid mt-5  rounded-5 shadow" style="background-color: rgb(255, 216, 169); margin-right: 20px; border: 1px solid rgb(241, 166, 97);"> -->
 
-                            </div>
-                        </form>
+            <div class="container-fluid p-5 text-white text-center rounded-top-5" style=" margin-right: 20px; ">
+                <h1 style="color: black;">Guide Line for Order</h1>
+                <p style="color: black; opacity: 50%;">... USER MANUAL ...</p>
+            </div>
+
+
+            <div class="row">
+
+                <div class="container">
+                    <div class="tab">
+                        <button class="tablinks" onclick="openStep(event, 'Step1')" id="defaultOpen">Step 1</button>
+                        <button class="tablinks" onclick="openStep(event, 'Step2')">Step 2</button>
+                        <button class="tablinks" onclick="openStep(event, 'Step3')">Step 3</button>
                     </div>
-                    <div class="footer4 justify-content-center d-flex align-content-center mb-4">
-                        <div style="margin-right: 30px; ">
-                            <button type="button" class="shadow rounded-5" data-bs-dismiss="modal"
-                                    style="background-color:  red; width:120px; height:40px; border:1px solid white">
-                                Cancel
-                            </button>
-                        </div>
-                        <div style="margin-left: 30px; ">
-                            <button type="button" class="shadow rounded-5"
-                                    style="background-color: green; width:120px; height:40px ; border:1px solid white">
-                                Login
-                            </button>
-                        </div>
+
+                    <div id="Step1" class="tabcontent text-center"
+                         style="border: 1px solid rgb(241, 166, 97); border-radius: 0 0 28px 0; background-color: white;">
+                        <h3 style="margin-top: 2%; margin-bottom: 5%;">Step 1</h3>
+                        <p style="text-align: center;">After Successful login, User can choose Available Items in our
+                            CANTEEN. If u want to order Item, <br> please click ORDER Button</p>
                     </div>
-                </div>
-                <div class="col-md-7">
-                    <textarea class="form-control" id="sugesstion" rows="13" placeholder="Enter Your Sugesstion...."
-                              style="border:1px solid rgb(241, 166, 97);"></textarea>
+
+                    <div id="Step2" class="tabcontent text-center"
+                         style="border: 1px solid rgb(241, 166, 97); border-radius: 0 0 28px 0; background-color: white;">
+                        <h3 style="margin-top: 2%; margin-bottom: 5%;">Step 2</h3>
+                        <p style="text-align: center;">After Choosing the Items, click the Number of Order Button, then
+                            you can check your order in Order Detail Box and also adjust Quantity of Item. <br> And then
+                            User must choose Payment Type for Successful order.
+                            Click CONFIRM Button.</p>
+                    </div>
+
+                    <div id="Step3" class="tabcontent text-center"
+                         style="border: 1px solid rgb(241, 166, 97); border-radius: 0 0 28px 0; background-color: white;">
+                        <h3 style="margin-top: 2%; margin-bottom: 5%;">Step 3</h3>
+                        <p>After clicking CONFIRM Button, the order is successfully ordered. User can see VOUCHER
+                            Slip.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!--For Footer-->
+<div id="Footer"></div>
+<!--For Footer end-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {{>footer}}
 </body>
 </html>

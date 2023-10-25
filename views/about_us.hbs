@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+    <!-- Bootstrupt CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- for CSS -->
+    <link rel="stylesheet" href="/stylesheets/about.css">
+    <!-- icon link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+
+    <!-- for link JavaScript -->
+    <script src="/javascripts/about.js" defer></script>
+
+    <title>About Us</title>
+    <link rel="icon" href="/images/logo.png" type="img/png">
 </head>
 
 {{> header_test}}
@@ -17,35 +28,29 @@
 <div id="header_nav"></div>
 <!--For nav end-->
 <section id="header">
-    <div class="container">
-        <div class="container-fluid mt-5 justify-content-center d-flex align-content-center rounded-5 shadow"
-             style="background-color: rgb(255, 216, 169); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
+    <div class="about-1" style="margin-left: 1.5%; margin-right: 1.5%;">
+        <div class="container-fluid mt-5 justify-content-center d-flex align-content-center rounded-5 shadow" style="background-color: rgb(255, 216, 169); margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
             <div class="row mb-5">
                 <div class="col-lg-12">
                     <div class="header_about mt-5" style="margin: 100px;">
-                        <p class="text-center text-uppercase">Who we are</p>
+                        <p class="text-center text-uppercase" style="opacity: 50%;">Who we are</p>
                         <h3 class="fw-bold text-center">About Us</h3>
                     </div>
                 </div>
 
 
                 <div class="col-md-3 justify-content-center d-flex align-content-center">
-                    <img src="/images/About us photo 1.jpeg"
-                         style="width: 80%; max-height: 300px; border: 1px solid rgb(241, 166, 97); "
-                         class="rounded-4 shadow" alt="">
+                    <img src="/images/About us photo 1.jpeg" style="width: 80%; max-height: 300px; border: 1px solid rgb(241, 166, 97); " class="rounded-4 shadow img-hover" alt="">
                 </div>
                 <div class="col-md-6">
-                    <div class=""><h4 class="fw-bold text-center p-4" style="font-size: 25px;">Best Dishes and Fresh in
-                        the Canteen</h4></div>
+                    <div class=""><h4 class="fw-bold text-center p-4" style="font-size: 25px;">Best Dishes and Fresh in the Canteen</h4></div>
                     <div class="paragraph text-center m-5">
                         <p>We always make the Best Food for you on a budget and</p>
                         <p>you can get it fresh and hot.</p>
                     </div>
                 </div>
                 <div class="col-md-3 justify-content-center d-flex align-content-center">
-                    <img src="/images/about us photo 2.jpeg"
-                         style="width: 80%; max-height: 300px; border: 1px solid rgb(241, 166, 97);"
-                         class="rounded-4 shadow" alt="">
+                    <img src="/images/about us photo 2.jpeg" style="width: 80%; max-height: 300px; border: 1px solid rgb(241, 166, 97);" class="rounded-4 shadow img-hover" alt="">
                 </div>
             </div>
         </div>
@@ -53,9 +58,73 @@
 </section>
 
 <section id="body">
-    <div class="container">
-        <div class="container-fluid mt-2 justify-content-center d-flex align-content-center rounded-5 shadow mt-5 mb-5"
-             style="background-color: white; margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
+    <div class="container mt-5">
+        <div class="header_about mt-5" style="margin: 100px;">
+            <p class="text-center text-uppercase" style="opacity: 50%;"> Our Decoration </p>
+            <h3 class="fw-bold text-center">GALLERY</h3>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 text-center">
+            <div class="col">
+                <a href="/images/canteen3.jpeg" class="lightbox">
+                    <img src="/images/canteen3.jpeg" class="img img-fluid rounded img-hover" alt="Image 1"  style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+            <div class="col">
+                <a href="/images/canteen5.jpeg" class="lightbox">
+                    <img src="/images/canteen5.jpeg" class="img img-fluid rounded img-hover" alt="Image 2" style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+            <div class="col">
+                <a href="/images/canteen2.jpeg" class="lightbox">
+                    <img src="/images/canteen2.jpeg" class="img-fluid rounded img-hover" alt="Image 3" style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+            <div class="col">
+                <a href="/images/canteen6.jpeg" class="lightbox">
+                    <img src="/images/canteen6.jpeg" class="img-fluid rounded img-hover" alt="Image 4" style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+            <div class="col">
+                <a href="/images/canteen14.jpeg" class="lightbox">
+                    <img src="/images/canteen14.jpeg" class="img-fluid rounded img-hover" alt="Image 9" style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+            <div class="col">
+                <a href="/images/canteen9.jpeg" class="lightbox">
+                    <img src="/images/canteen9.jpeg" class="img-fluid rounded img-hover" alt="Image 7" style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+            <div class="col">
+                <a href="/images/canteen8.jpeg" class="lightbox">
+                    <img src="/images/canteen8.jpeg" class="img-fluid rounded img-hover" alt="Image 6" style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+            <div class="col">
+                <a href="/images/canteen11.jpeg" class="lightbox">
+                    <img src="/images/canteen11.jpeg" class="img-fluid rounded img-hover" alt="Image 8" style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+            <div class="col">
+                <a href="/images/canteen7.jpeg" class="lightbox">
+                    <img src="/images/canteen7.jpeg" class="img-fluid rounded img-hover" alt="Image 5" style="width: 356px; height: 534px; border: 1px solid rgb(255, 216, 169);">
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- The lightbox for displaying the enlarged image -->
+<div id="lightboxModal" class="modal">
+    <span class="close" onclick="closeLightboxModal()">&times;</span>
+    <img id="enlargedImg" class="modal-content">
+</div>
+
+<section id="footer">
+    <div class="about-2" style="margin-left: 1.5%; margin-right: 1.5%;">
+        <div class="container-fluid mt-2 justify-content-center d-flex align-content-center rounded-5 shadow mt-5 mb-5" style="background-color: white; margin-right: 20px; border: 1px solid rgb(241, 166, 97);">
             <div class="row m-5">
                 <div class="col-lg-12">
                     <div class="header_about mt-5" style="margin: 100px;">
@@ -65,77 +134,62 @@
 
 
                 <div class="col-md-3 mb-3 text-center">
-                    <img src="/images/budget icon2.jpeg"
-                         style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/budget icon.png" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
+                    <p class="text-center">All of the foods Price are Budget</p>
+                </div>
+                <div class="col-md-3 mb-3 text-center">
+                    <img src="/images/good taste icon.png" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Great Taste</p>
                 </div>
                 <div class="col-md-3 mb-3 text-center">
-                    <img src="/images/good taste icon.png"
-                         style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
-                    <p class="text-center">Great Taste</p>
-                </div>
-                <div class="col-md-3 mb-3 text-center">
-                    <img src="/images/faster order icon.png"
-                         style="width: 30%; max-height: 300px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/faster order icon.jpeg" style="width: 30%; max-height: 300px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Fast Order Preparation</p>
                 </div>
                 <div class="col-md-3 mb-3 text-center">
-                    <img src="/images/clean and fresh icon.jpeg"
-                         style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/clean and fresh icon.png" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Fresh and Clean</p>
                 </div>
 
                 <div class="col-lg-12">
                     <div class="header_about mt-5" style="margin: 100px;">
-                        <h3 class="fw-bold text-center">Available Food Category</h3>
+                        <h3 class="fw-bold text-center">Available Food Categories</h3>
+                        <!-- <p class="text-center" style="opacity: 50%; font-size: 15px;">Can Order in Foods</p> -->
+                        <p class="text-center" style="opacity: 50%;">These categories are available in our CANTEEN...</p>
                     </div>
                 </div>
 
                 <div class="col-md-2 mb-3 text-center">
-                    <img src="/images/drink icon.png"
-                         style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/drink icon.jpg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Drinks</p>
                 </div>
                 <div class="col-md-2 mb-3 text-center">
-                    <img src="/images/food icon.png"
-                         style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/fried icon.jpeg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Fires</p>
                 </div>
                 <div class="col-md-2 mb-3 text-center">
-                    <img src="/images/soup icon.jpeg"
-                         style="width: 30%; max-height: 300px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/salad icon.jpeg" style="width: 30%; max-height: 300px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Salad</p>
                 </div>
                 <div class="col-md-2 mb-3 text-center">
-                    <img src="/images/fast food icon.png"
-                         style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/fast food icon.jpeg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Fast Food</p>
                 </div>
                 <div class="col-md-2 mb-3 text-center">
-                    <img src="/images/soup icon.jpeg"
-                         style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/soup icon.jpeg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Soup</p>
                 </div>
                 <div class="col-md-2 mb-3 text-center">
-                    <img src="/images/food icon.png"
-                         style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);"
-                         class=" rounded-circle mb-3 shadow" alt="">
+                    <img src="/images/curry icon.jpeg" style="width: 30%; max-height: 200px; border: 1px solid rgb(241, 166, 97);" class=" rounded-circle mb-3 img-hover" alt="">
                     <p class="text-center">Curry</p>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
+
+<!--For Footer end-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 {{>footer}}
 </body>
 </html>

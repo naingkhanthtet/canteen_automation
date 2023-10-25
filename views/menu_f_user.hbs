@@ -110,11 +110,11 @@
                         Cancel
                     </button>
                     <button id="order-confirm" type="submit" class="button_ho shadow rounded-3"
-                            style="background-color: green; color: white; width:200px; height:50px ; border:1px solid white;" onclick="submitOrder()">
+                            style="background-color: green; color: white; width:200px; height:50px ; border:1px solid white;"
+                            onclick="submitOrder()">
                         Order
                     </button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -194,42 +194,12 @@
             <!-- for specific category header -->
             <div id="changeCategory"></div>
 
-            <!-- curry -->
-            <div class="category-row" id="curry-category">
-                <div class="row g-0 mt-3" id="curry-category">
-                    {{#each curryItems}}
-                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
-                            <div class="card w-100" style="width: 18rem;">
-                                <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
-                                     style="width: 100%; height: 250px; object-fit: cover;">
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <h5 class="card-title"><b>{{this.mname}}</b></h5>
-                                        <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
-                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
-                                            MMK</p>
-                                        <button type="button"
-                                                class="btn d-flex justify-content-center mx-auto"
-                                                food-name="{{this.mname}}" food-price="{{this.price}}"
-                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
-                                                id="order-button-{{this.mid}}"
-                                                button-action="add"
-                                                onclick="orderFood(this)"
-                                                style="background-color: #E38B29">Order
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {{/each}}
-                </div>
-            </div>
-
             <!--            drink-->
             <div class="category-row" id="drink-category">
                 <div class="row g-0 mt-3">
                     {{#each drinkItems}}
-                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col {{this.mrole}}" db-id="{{this.mid}}"
+                             style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -237,30 +207,87 @@
                                     <div class="text-center">
                                         <h5 class="card-title"><b>{{this.mname}}</b></h5>
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
-                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                        <p class="card-price" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <button type="button"
-                                                class="btn d-flex justify-content-center mx-auto"
-                                                food-name="{{this.mname}}" food-price="{{this.price}}"
-                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
-                                                id="order-button-{{this.mid}}"
-                                                button-action="add"
-                                                onclick="orderFood(this)"
-                                                style="background-color: #E38B29">Order
-                                        </button>
+                                        {{#if this.quantity}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                    food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                    id="order-button-{{this.mid}}"
+                                                    button-action="add"
+                                                    onclick="orderFood(this)"
+                                                    style="background-color: #E38B29">Order
+                                            </button>
+                                        {{else}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    disabled
+                                                    style="background-color: #E38B29">Out of stock
+                                            </button>
+                                        {{/if}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     {{/each}}
                 </div>
+                <button type="button" class="btn d-flex justify-content-center mx-auto"
+                        onclick="showMore('Drink')"
+                        style="display: none; background-color: #E38B29; padding: 1%; margin-top: 20px;">Show more +
+                </button>
+            </div>
+
+            <!-- curry -->
+            <div class="category-row" id="curry-category">
+                <div class="row g-0 mt-3" id="curry-category">
+                    {{#each curryItems}}
+                        <div class="con col-md-3 no-padding-col {{this.mrole}}" db-id="{{this.mid}}"
+                             style="padding: 0.5%;">
+                            <div class="card w-100" style="width: 18rem;">
+                                <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
+                                     style="width: 100%; height: 250px; object-fit: cover;">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title"><b>{{this.mname}}</b></h5>
+                                        <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
+                                        <p class="card-price" style="font-size: 1rem;">{{this.price}}
+                                            MMK</p>
+                                        {{#if this.quantity}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                    food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                    id="order-button-{{this.mid}}"
+                                                    button-action="add"
+                                                    onclick="orderFood(this)"
+                                                    style="background-color: #E38B29">Order
+                                            </button>
+                                        {{else}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    disabled
+                                                    style="background-color: #E38B29">Out of stock
+                                            </button>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+                <button type="button" class="btn d-flex justify-content-center mx-auto"
+                        onclick="showMore('Curry')"
+                        style="display: none; background-color: #E38B29; padding: 1%; margin-top: 20px;">Show more +
+                </button>
             </div>
 
             <!--            drink-->
             <div class="category-row" id="fries-category">
                 <div class="row g-0 mt-3">
                     {{#each friesItems}}
-                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col {{this.mrole}}" db-id="{{this.mid}}"
+                             style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -268,30 +295,43 @@
                                     <div class="text-center">
                                         <h5 class="card-title"><b>{{this.mname}}</b></h5>
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
-                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                        <p class="card-price" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <button type="button"
-                                                class="btn d-flex justify-content-center mx-auto"
-                                                food-name="{{this.mname}}" food-price="{{this.price}}"
-                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
-                                                id="order-button-{{this.mid}}"
-                                                button-action="add"
-                                                onclick="orderFood(this)"
-                                                style="background-color: #E38B29">Order
-                                        </button>
+                                        {{#if this.quantity}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                    food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                    id="order-button-{{this.mid}}"
+                                                    button-action="add"
+                                                    onclick="orderFood(this)"
+                                                    style="background-color: #E38B29">Order
+                                            </button>
+                                        {{else}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    disabled
+                                                    style="background-color: #E38B29">Out of stock
+                                            </button>
+                                        {{/if}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     {{/each}}
                 </div>
+                <button type="button" class="btn d-flex justify-content-center mx-auto"
+                        onclick="showMore('Fries')"
+                        style="display: none; background-color: #E38B29; padding: 1%; margin-top: 20px;">Show more +
+                </button>
             </div>
 
             <!--            salad-->
             <div class="category-row" id="salad-category">
                 <div class="row g-0 mt-3">
                     {{#each saladItems}}
-                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col {{this.mrole}}" db-id="{{this.mid}}"
+                             style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -299,30 +339,43 @@
                                     <div class="text-center">
                                         <h5 class="card-title"><b>{{this.mname}}</b></h5>
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
-                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                        <p class="card-price" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <button type="button"
-                                                class="btn d-flex justify-content-center mx-auto"
-                                                food-name="{{this.mname}}" food-price="{{this.price}}"
-                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
-                                                id="order-button-{{this.mid}}"
-                                                button-action="add"
-                                                onclick="orderFood(this)"
-                                                style="background-color: #E38B29">Order
-                                        </button>
+                                        {{#if this.quantity}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                    food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                    id="order-button-{{this.mid}}"
+                                                    button-action="add"
+                                                    onclick="orderFood(this)"
+                                                    style="background-color: #E38B29">Order
+                                            </button>
+                                        {{else}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    disabled
+                                                    style="background-color: #E38B29">Out of stock
+                                            </button>
+                                        {{/if}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     {{/each}}
                 </div>
+                <button type="button" class="btn d-flex justify-content-center mx-auto"
+                        onclick="showMore('Salad')"
+                        style="display: none; background-color: #E38B29; padding: 1%; margin-top: 20px;">Show more +
+                </button>
             </div>
 
             <!--            fast-->
             <div class="category-row" id="fast-category">
                 <div class="row g-0 mt-3">
                     {{#each fastItems}}
-                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col {{this.mrole}}" db-id="{{this.mid}}"
+                             style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -330,30 +383,43 @@
                                     <div class="text-center">
                                         <h5 class="card-title"><b>{{this.mname}}</b></h5>
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
-                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                        <p class="card-price" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <button type="button"
-                                                class="btn d-flex justify-content-center mx-auto"
-                                                food-name="{{this.mname}}" food-price="{{this.price}}"
-                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
-                                                id="order-button-{{this.mid}}"
-                                                button-action="add"
-                                                onclick="orderFood(this)"
-                                                style="background-color: #E38B29">Order
-                                        </button>
+                                        {{#if this.quantity}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                    food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                    id="order-button-{{this.mid}}"
+                                                    button-action="add"
+                                                    onclick="orderFood(this)"
+                                                    style="background-color: #E38B29">Order
+                                            </button>
+                                        {{else}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    disabled
+                                                    style="background-color: #E38B29">Out of stock
+                                            </button>
+                                        {{/if}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     {{/each}}
                 </div>
+                <button type="button" class="btn d-flex justify-content-center mx-auto"
+                        onclick="showMore('Fast')"
+                        style="display: none; background-color: #E38B29; padding: 1%; margin-top: 20px;">Show more +
+                </button>
             </div>
 
             <!--            soup-->
             <div class="category-row" id="soup-category">
                 <div class="row g-0 mt-3">
                     {{#each soupItems}}
-                        <div class="con col-md-3 no-padding-col" db-id="{{this.mid}}" style="padding: 0.5%;">
+                        <div class="con col-md-3 no-padding-col {{this.mrole}}" db-id="{{this.mid}}"
+                             style="padding: 0.5%;">
                             <div class="card w-100" style="width: 18rem;">
                                 <img src="{{this.imgUrl}}" class="card-img-top" alt={{this.mname}}
                                      style="width: 100%; height: 250px; object-fit: cover;">
@@ -361,31 +427,38 @@
                                     <div class="text-center">
                                         <h5 class="card-title"><b>{{this.mname}}</b></h5>
                                         <p class="card-text" style="font-size: 0.7rem; opacity: 60%;">{{this.mnote}}</p>
-                                        <p class="card-text" style="font-size: 1rem;">{{this.price}}
+                                        <p class="card-price" style="font-size: 1rem;">{{this.price}}
                                             MMK</p>
-                                        <button type="button"
-                                                class="btn d-flex justify-content-center mx-auto"
-                                                food-name="{{this.mname}}" food-price="{{this.price}}"
-                                                food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
-                                                id="order-button-{{this.mid}}"
-                                                button-action="add"
-                                                onclick="orderFood(this)"
-                                                style="background-color: #E38B29">Order
-                                        </button>
+                                        {{#if this.quantity}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    food-name="{{this.mname}}" food-price="{{this.price}}"
+                                                    food-id="{{this.mid}}" food-quantity="{{this.quantity}}"
+                                                    id="order-button-{{this.mid}}"
+                                                    button-action="add"
+                                                    onclick="orderFood(this)"
+                                                    style="background-color: #E38B29">Order
+                                            </button>
+                                        {{else}}
+                                            <button type="button"
+                                                    class="btn d-flex justify-content-center mx-auto"
+                                                    disabled
+                                                    style="background-color: #E38B29">Out of stock
+                                            </button>
+                                        {{/if}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     {{/each}}
                 </div>
+                <button type="button" class="btn d-flex justify-content-center mx-auto"
+                        onclick="showMore('Soup')"
+                        style="display: none; background-color: #E38B29; padding: 1%; margin-top: 20px;">Show more +
+                </button>
             </div>
-
         </div>
-
-
     </div>
-
-</div>
 </div>
 {{>footer}}
 
