@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
                     });
                 } else {
                     if (result[0].urole === "Admin") {
-                        generateToken(res, result[0].uid, '/viewItems');
+                        generateToken(res, result[0].uid, '/showTotal');
                     } else {
                         generateToken(res, result[0].uid, '/home');
                     }
@@ -165,7 +165,7 @@ exports.resetPassword = (req, res) => {
             } else if (reset_password !== confirm_reset_password) {
                 return res.status(500).render('forgot_password', {msg: "Passwords do not match"});
             } else if (!result || result.length === 0) {
-                return res.status(500).render('forgot_password', { msg: "No records found" });
+                return res.status(500).render('forgot_password', {msg: "No records found"});
             }
 
             if (reset_password === result[0].rawpasswd) {
@@ -293,6 +293,44 @@ exports.deleteFeedback = async (req, res, next) => {
             next();
         }
     });
+}
+
+exports.showTotal = async (req, res, next) => {
+    try {
+        db.query("select count(uid) as user_count from Users", (err, user_count) => {
+            if (err) {
+                console.error(err);
+            } else {
+                db.query("select count(oid) as order_count from OrderHistory", (err, order_count) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        db.query("select count(fid) as feedback_count from Feedbacks", (err, feedback_count) => {
+                            if (err) {
+                                console.error(err);
+                            } else {
+                                db.query("select count(mid) as menu_count from Menus", (err, menu_count) => {
+                                    if (err) {
+                                        console.error(err);
+                                    } else {
+                                        req.total_count = {
+                                            user_count: user_count[0].user_count,
+                                            order_count: order_count[0].order_count,
+                                            feedback_count: feedback_count[0].feedback_count,
+                                            menu_count: menu_count[0].menu_count
+                                        };
+                                        next();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 const fetchMenu = (role, req, next) => {

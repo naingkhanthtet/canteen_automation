@@ -120,7 +120,13 @@ router.get('/deleteFeedback/:fid', index.isLoggedIn, index.isAdmin, index.delete
         res.redirect('/login');
     }
 });
-
+router.get('/showTotal', index.isLoggedIn, index.isAdmin, index.showTotal, (req, res) => {
+    if (req.user) {
+        res.render('admin/total_view', {total_count: req.total_count});
+    } else {
+        res.redirect('/login');
+    }
+});
 
 // Cart
 router.post('/delCartOrders', index.isLoggedIn, index.deleteOrdersAfterConfirmed);
