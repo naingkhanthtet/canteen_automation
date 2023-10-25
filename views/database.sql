@@ -123,3 +123,9 @@ create table OrderHistory (
     quantity INT not null,
     price INT not null
 );
+
+create table Feedbacks (
+    fid INT AUTO_INCREMENT unique primary key,
+    uid INT not null,
+    feedback MEDIUMTEXT not null
+);

@@ -77,6 +77,13 @@ router.get('/viewClientOrders', index.isLoggedIn, index.isAdmin, index.fetchAllO
         res.redirect('/login');
     }
 });
+router.get('/viewFeedbacks', index.isLoggedIn, index.isAdmin, index.fetchAllFeedbacks, (req, res) => {
+    if (req.user) {
+        res.render('admin/feedback_view', {feedbacks: req.feedbacks});
+    } else {
+        res.redirect('/login');
+    }
+})
 router.get('/addItem', index.isLoggedIn, index.isAdmin, (req, res) => {
     res.render('admin/menu_add')
 });
@@ -106,6 +113,13 @@ router.get('/deleteOrder/:oid', index.isLoggedIn, index.isAdmin, index.deleteOrd
         res.redirect('/login');
     }
 });
+router.get('/deleteFeedback/:fid', index.isLoggedIn, index.isAdmin, index.deleteFeedback, (req, res) => {
+    if (req.user) {
+        res.redirect('/viewFeedbacks');
+    } else {
+        res.redirect('/login');
+    }
+});
 
 
 // Cart
@@ -116,5 +130,9 @@ router.get('/cartCount/:userId', index.isLoggedIn, index.cartCount);
 router.get('/inCart', index.isLoggedIn, index.chkCart);
 router.post('/removeIfZero', index.isLoggedIn, index.removeIfZero);
 router.post('/submitOrder', index.isLoggedIn, index.submitOrder);
+
+
+// Feedback
+router.post('/addFeedback', index.isLoggedIn, index.addFeedback);
 
 module.exports = router;

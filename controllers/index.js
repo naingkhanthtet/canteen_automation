@@ -139,6 +139,22 @@ exports.isAdmin = (req, res, next) => {
     }
 };
 
+exports.addFeedback = (req, res) => {
+    const user_id = req.user.uid;
+    const {feedback} = req.body;
+    try {
+        db.query("insert into Feedbacks (uid, feedback) values (?, ?)", [user_id, feedback], (err, result) => {
+            if (err) {
+                return res.status(500).render('contact_us', {msg: "Cannot give feedback now"});
+            } else {
+                return res.status(500).render('contact_us', {msg: "Feedback submitted, Thank you for your feedback"});
+            }
+        });
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 exports.resetPassword = (req, res) => {
     try {
         const {email, reset_password, confirm_reset_password} = req.body;
@@ -194,6 +210,17 @@ exports.fetchAllUsers = async (req, res, next) => {
         req.allUsers = result;
         next();
     });
+}
+
+exports.fetchAllFeedbacks = async (req, res, next) => {
+    db.query("select * from Feedbacks", (err, result) => {
+        if (err) {
+            console.error(err);
+        } else {
+            req.feedbacks = result;
+            next();
+        }
+    })
 }
 
 exports.addToMenuDB = async (req, res) => {
@@ -254,7 +281,18 @@ exports.deleteOrder = async (req, res, next) => {
         } else {
             next();
         }
-    })
+    });
+}
+
+exports.deleteFeedback = async (req, res, next) => {
+    const feedback_id = req.params.fid;
+    db.query("delete from Feedbacks where fid=?", [feedback_id], (err, result) => {
+        if (err) {
+            return res.status(500).render('admin/feedback_view', {msg: "error occurs, cannot remove"});
+        } else {
+            next();
+        }
+    });
 }
 
 const fetchMenu = (role, req, next) => {

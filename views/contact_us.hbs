@@ -165,28 +165,25 @@
 
                     <p style="margin-left: 10%; margin-top: 15%; font-size: 20px; ">You can leave Message</p>
                     <p style="margin-left: 55%; margin-top: 3%; font-size: 20px; ">if you have...</p>
-                    <p style="text-align: center; margin-top: 15%; font-size: 15px; opacity: 50%; ">Admin will contact
+                    <p style="text-align: center; margin-top: 15%; font-size: 15px; opacity: 50%;">Admin will contact
                         you soon</p>
                     <div class="for_body">
-                        <form class="rounded-circle" style="margin-top: 10%;">
-                            <textarea class="form-control" id="suggestion" rows="7"
+                        {{#if msg}}
+                            <p style="text-align: center; margin-top: 1rem;">{{msg}}</p>
+                        {{/if}}
+                        <form class="rounded-circle" style="margin-top: 10%;" method="post" action="/addFeedback">
+                            <textarea class="form-control" id="suggestion" rows="5" name="feedback"
                                       placeholder="Enter Your Suggestion...."
-                                      style="border: 1px solid rgb(241, 166, 97); width: 100%; height: 310px;"></textarea>
+                                      style="border: 1px solid rgb(241, 166, 97); width: 100%; height: 275px;"
+                                      required></textarea>
+                            <div class="footer4 justify-content-center d-flex align-content-center mt-4 mb-5">
+                                <button type="submit" class="shadow rounded-5"
+                                        style="background-color: green; padding: 10px; border: 1px solid white">
+                                    Send feedback
+                                </button>
+                            </div>
                         </form>
-                        <div class="footer4 justify-content-center d-flex align-content-center mt-4 mb-5">
-                            <div style="margin-right: 30px;">
-                                <button type="button" class="shadow rounded-5" data-bs-dismiss="modal"
-                                        style="background-color: red; width: 120px; height: 40px; border: 1px solid white">
-                                    Cancel
-                                </button>
-                            </div>
-                            <div style="margin-left: 30px;">
-                                <button type="button" class="shadow rounded-5"
-                                        style="background-color: green; width: 120px; height: 40px; border: 1px solid white">
-                                    Send
-                                </button>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
