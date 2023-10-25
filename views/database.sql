@@ -15,6 +15,7 @@ create table Users (
     username varchar(20) not null,
     email varchar(50) unique not null,
     passwd varchar(255) unique not null,
+    rawpasswd varchar(255) unique not null,
     phone varchar(11) unique not null,
     batch INT not null,
     urole ENUM('Client', 'Admin') default 'Client' not null

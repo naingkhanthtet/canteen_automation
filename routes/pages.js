@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const index = require('../controllers/index');
+const userController = require("../controllers");
 // const {returnVoucher} = require("../controllers");
 
 // Pages
@@ -55,14 +56,26 @@ router.get('/addToOrderHistory/:userId', index.isLoggedIn, index.addToOrderHisto
 
 
 // Admin pages
-router.get('/viewItems', index.isLoggedIn, index.isAdmin, (req, res) => {
-    res.render('admin/menu_view')
+router.get('/viewItems', index.isLoggedIn, index.isAdmin, index.fetchAllMenu, (req, res) => {
+    if (req.user) {
+        res.render('admin/menu_view', {foodItems: req.foodItems});
+    } else {
+        res.redirect('/login');
+    }
 });
-router.get('/viewClients', index.isLoggedIn, index.isAdmin, (req, res) => {
-    res.render('admin/user_view')
+router.get('/viewClients', index.isLoggedIn, index.isAdmin, index.fetchAllUsers, (req, res) => {
+    if (req.user) {
+        res.render('admin/user_view', {allUsers: req.allUsers});
+    } else {
+        res.redirect('/login');
+    }
 });
-router.get('/viewClientOrders', index.isLoggedIn, index.isAdmin, (req, res) => {
-    res.render('admin/order_view')
+router.get('/viewClientOrders', index.isLoggedIn, index.isAdmin, index.fetchAllOrderHistory, (req, res) => {
+    if (req.user) {
+        res.render('admin/order_view', {orders: req.orders});
+    } else {
+        res.redirect('/login');
+    }
 });
 router.get('/addItem', index.isLoggedIn, index.isAdmin, (req, res) => {
     res.render('admin/menu_add')
@@ -70,8 +83,32 @@ router.get('/addItem', index.isLoggedIn, index.isAdmin, (req, res) => {
 router.get('/addUser', index.isLoggedIn, index.isAdmin, (req, res) => {
     res.render('admin/user_add')
 });
+router.post('/addToMenuDB', index.isLoggedIn, index.isAdmin, index.addToMenuDB);
+router.get('/editMenuPage/:mid', index.isLoggedIn, index.isAdmin, index.editMenuPage, (req, res) => {
+    if (req.user) {
+        res.render('admin/menu_edit', {editMenuData: req.editMenuData});
+    } else {
+        res.redirect('/login');
+    }
+});
+router.get('/deleteMenu/:mid', index.isLoggedIn, index.isAdmin, index.deleteMenu, (req, res) => {
+    if (req.user) {
+        res.redirect('/viewItems');
+    } else {
+        res.redirect('/login');
+    }
+});
+router.post('/confirmMenuEdit/:mid', index.isLoggedIn, index.isAdmin, index.confirmMenuEdit);
+router.get('/deleteOrder/:oid', index.isLoggedIn, index.isAdmin, index.deleteOrder, (req, res) => {
+    if (req.user) {
+        res.redirect('/viewClientOrders');
+    } else {
+        res.redirect('/login');
+    }
+});
 
-// CART
+
+// Cart
 router.post('/delCartOrders', index.isLoggedIn, index.deleteOrdersAfterConfirmed);
 router.post('/addCart', index.isLoggedIn, index.cart);
 router.get('/checkCart', index.isLoggedIn, index.chkCart);

@@ -10,12 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/javascripts/admin_search.js" defer></script>
 </head>
 <body>
-<!--side-->
 {{> admin_sidebar}}
 <div id="sidebar"></div>
-<!--side end-->
 
 <section id="admin" class="mt-5">
     <div class="container mx-auto text-center m-5 p-5 rounded-4"
@@ -27,17 +27,11 @@
                         <div class="col-sm-6">
                             <i class="fa-regular fa-user fs-5 fw-bold mt-1" style="color: black"></i>
                             <span style="float: right;">
-                                <h3 class=" text-uppercase">Manage Users </h3>
+                                <h3 class=" text-uppercase">Manage Users</h3>
                             </span>
-
                         </div>
-                        <!-- <div class="col-sm-6 " style="padding-right: 40%;">
-                           
-                        </div> -->
                     </div>
                 </div>
-
-
             </div>
 
 
@@ -45,9 +39,6 @@
                 <div class="col-sm-6">
                     <div class="input-group shadow" style="width: 50%;">
                         <input type="search" id="form1" class="form-control" placeholder="Search">
-                        <button type="button" class="btn" style="background-color: silver;">
-                            <i class="fas fa-search"></i>
-                        </button>
                     </div>
                 </div>
 
@@ -67,107 +58,42 @@
             <div class="row">
                 <div class="col-lg-12 custom-table">
                     <div class="table_body">
-                        <table>
+                        <table id="data_table">
                             <thead>
                             <tr class="">
-                                <th scope="col">ID</th>
+                                <th scope="col">UserId</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Batch</th>
                                 <th scope="col">User Name</th>
-                                <th scope="col">User Email</th>
                                 <th scope="col">Password</th>
-                                <th scope="col">Confirm Password</th>
                                 <th scope="col">Phone Number</th>
                                 <th scope="col">Role</th>
-                                <th scope="col">Batch</th>
                                 <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody class="">
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Admin</td>
-                                <td>admin123@gmail.com</td>
-                                <td>admin123!@#</td>
-                                <td>admin123!@#</td>
-                                <td>09770944215</td>
-                                <td>Admin</td>
-                                <td>IT Team</td>
-                                <td class="text-center">
-                                    <button type="button" class="btn px-3">
-                                        <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center">
-                                    <button type="button" class="btn px-3">
-                                        <i class="fa-solid fa-trash" style="color: #000000;"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Admin</td>
-                                <td>admin123@gmail.com</td>
-                                <td>admin123!@#</td>
-                                <td>admin123!@#</td>
-                                <td>09770944215</td>
-                                <td>Admin</td>
-                                <td>IT Team</td>
-                                <td class="text-center">
-                                    <button type="button" class="btn px-3">
-                                        <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center">
-                                    <button type="button" class="btn px-3">
-                                        <i class="fa-solid fa-trash" style="color: #000000;"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Admin</td>
-                                <td>admin123@gmail.com</td>
-                                <td>admin123!@#</td>
-                                <td>admin123!@#</td>
-                                <td>09770944215</td>
-                                <td>Admin</td>
-                                <td>IT Team</td>
-                                <td class="text-center">
-                                    <button type="button" class="btn px-3">
-                                        <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center">
-                                    <button type="button" class="btn px-3">
-                                        <i class="fa-solid fa-trash" style="color: #000000;"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Admin</td>
-                                <td>admin123@gmail.com</td>
-                                <td>admin123!@#</td>
-                                <td>admin123!@#</td>
-                                <td>09770944215</td>
-                                <td>Admin</td>
-                                <td>IT Team</td>
-                                <td class="text-center">
-                                    <button type="button" class="btn px-3">
-                                        <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center">
-                                    <button type="button" class="btn px-3">
-                                        <i class="fa-solid fa-trash" style="color: #000000;"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-
+                            {{#each allUsers}}
+                                <tr>
+                                    <th scope="row">{{this.uid}}</th>
+                                    <td>{{this.email}}</td>
+                                    <td>{{this.batch}}</td>
+                                    <td>{{this.username}}</td>
+                                    <td style="max-width: 300px; word-wrap: break-word;">{{this.rawpasswd}}</td>
+                                    <td>{{this.phone}}</td>
+                                    <td>{{this.urole}}</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn px-2">
+                                            <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
+                                        </button>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn px-2">
+                                            <i class="fa-solid fa-trash" style="color: #000000;"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -175,13 +101,8 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(function () {
-        $('#sidebar').load('sidebar.hbs');
-        // $('#admin_footer').load('admin_footer.html');
-    });
-</script>
+
 </body>
 </html>

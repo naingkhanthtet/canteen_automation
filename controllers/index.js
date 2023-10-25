@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
+const {or} = require("sequelize");
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -105,13 +106,14 @@ exports.register = (req, res) => {
             passwd: hashedPw,
             phone: phone,
             batch: batch,
-            urole: 'Client'
+            urole: 'Client',
+            rawpasswd: password
         }, (err, result) => {
             if (err) {
                 console.error(err);
             } else {
                 // console.log(result);
-                return res.render('register', {msg: "user registration success"});
+                return res.render('login', {msg: "user registration success"});
             }
         })
     });
@@ -137,7 +139,90 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 };
 
+
 // function for menu database selection
+exports.fetchAllMenu = async (req, res, next) => {
+    db.query("select * from Menus", (err, result) => {
+        req.foodItems = result;
+        next();
+    });
+}
+
+exports.fetchAllOrderHistory = async (req, res, next) => {
+    db.query("select * from OrderHistory", (err, result) => {
+        req.orders = result;
+        next();
+    });
+}
+
+exports.fetchAllUsers = async (req, res, next) => {
+    db.query("select * from Users", (err, result) => {
+        req.allUsers = result;
+        next();
+    });
+}
+
+exports.addToMenuDB = async (req, res) => {
+    const {food_name, food_category, food_note, food_quantity, food_price, food_image} = req.body;
+    db.query("insert into menus (mname, mnote, quantity, price, mrole, imgUrl) values (?, ?, ?, ?, ?, ?)",
+        [food_name, food_note, food_quantity, food_price, food_category, food_image], (err, result) => {
+            if (err) {
+                return res.status(500).render('admin/menu_add', {msg: "Failed to add into database"});
+            } else {
+                return res.status(200).render('admin/menu_add', {msg: 'Menu added to Database'});
+            }
+        });
+}
+
+exports.editMenuPage = async (req, res, next) => {
+    const menu_id = req.params.mid;
+    db.query("select * from menus where mid=?", [menu_id], (err, result) => {
+        if (err) {
+            return res.status(500).render('admin/menu_view', {msg: "error occurs, cannot edit"});
+        } else {
+            req.editMenuData = result;
+            next();
+        }
+    })
+}
+
+exports.deleteMenu = async (req, res, next) => {
+    const menu_id = req.params.mid;
+    db.query("delete from menus where mid=?", [menu_id], (err, result) => {
+        if (err) {
+            return res.status(500).render('admin/menu_view', {msg: "error occurs, cannot delete"});
+        } else {
+            next();
+        }
+    });
+}
+
+exports.confirmMenuEdit = async (req, res) => {
+    const menu_id = req.params.mid;
+    const {food_name, food_category, food_note, food_quantity, food_price, food_image} = req.body;
+    db.query("update menus set mname=?, mnote=?, quantity=?, price=?, mrole=?, imgUrl=? where mid=?",
+        [food_name, food_note, food_quantity, food_price, food_category, food_image, menu_id],
+        (err, result) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).render('admin/menu_edit', {msg: "Failed to edit"});
+            } else {
+                return res.status(200).render('admin/menu_add', {msg: `${food_name} updated`});
+            }
+        });
+}
+
+exports.deleteOrder = async (req, res, next) => {
+    const order_id = req.params.oid;
+    db.query("delete from OrderHistory where oid=?", [order_id], (err, result) => {
+        if (err) {
+            return res.status(500).render('admin/order_view', {msg: "error occurs, cannot remove"});
+        } else {
+            next();
+        }
+    })
+}
+
 const fetchMenu = (role, req, next) => {
     db.query(`select * from menus where mrole='${role}'`, (err, result) => {
         if (err) throw err;

@@ -21,25 +21,14 @@
         <div class="container-fluid p-5 rounded-4"
              style="background-color: white; width: 45%; border: 1px solid orangered;">
             <div class="row">
-
                 <h3 class="fw-bold">
                     <i class="fa-solid fa-user fs-5" style="color: #000000;"></i>
                     Add New Account
-
                 </h3>
-
             </div>
             <div class="row">
                 <div class="col-lg-12 ">
-                    <form class="m-4 rounded-circle mx-auto">
-
-                        <div class="mb-4" style="color: grey">
-                            <label class="form-label text-dark">Enter ID</label>
-                            <input type="text" class="form-control rounded-2 shadow" id="floatingname"
-                                   placeholder="Enter ID"
-                                   style="background-color:whitesmoke; border: 1px solid rgb(241, 166, 97);; ">
-                        </div>
-
+                    <form class="m-4 rounded-circle mx-auto" action="/addToUserDB" method="post">
                         <div class="mb-4" style="color: grey">
                             <label class="form-label text-dark">Enter User Name</label>
                             <input type="text" class="form-control rounded-2 shadow" id="floatingname"
@@ -115,13 +104,8 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(function () {
-        $('#sidebar').load('sidebar.hbs');
-        // $('#admin_footer').load('admin_footer.html');
-    });
-</script>
 </body>
 </html>
