@@ -19,17 +19,6 @@ exports.registerPage = (req, res) => {
     res.render('register');
 };
 
-exports.isAdmin = (req, res, next) => {
-    if (req.user.urole === "Admin") {
-        return next();
-    } else {
-        return res.render('error', {
-            msgHeader: 'Unauthorized',
-            msg: 'You do not have permission to access this page.'
-        });
-    }
-};
-
 function generateToken(res, uid, page) {
     const token = jwt.sign({id: uid}, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN,
@@ -139,6 +128,51 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 };
 
+exports.isAdmin = (req, res, next) => {
+    if (req.user.urole === "Admin") {
+        return next();
+    } else {
+        return res.render('error', {
+            msgHeader: 'Unauthorized',
+            msg: 'You do not have permission to access this page.'
+        });
+    }
+};
+
+exports.resetPassword = (req, res) => {
+    try {
+        const {email, reset_password, confirm_reset_password} = req.body;
+        db.query("select email, rawpasswd from Users where email=? or rawpasswd=?", [email, reset_password], async (err, result) => {
+            console.log(result);
+            if (err) {
+                return res.status(500).render('forgot_password', {msg: "Database error"});
+            } else if (reset_password !== confirm_reset_password) {
+                return res.status(500).render('forgot_password', {msg: "Passwords do not match"});
+            } else if (!result || result.length === 0) {
+                return res.status(500).render('forgot_password', { msg: "No records found" });
+            }
+
+            if (reset_password === result[0].rawpasswd) {
+                return res.status(500).render('forgot_password', {msg: "Old password is not allowed."});
+            } else if (!reset_password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+                return res.render('forgot_password', {msg: 'Change password! At least 8 characters, 1 Uppercase, 1 lowercase, 1 special character'});
+            } else if (email !== result[0].email) {
+                return res.render('forgot_password', {msg: 'This email is not registered.'});
+            }
+
+            let hashedPw = await bcrypt.hash(reset_password, 8);
+            db.query("update Users set passwd=?, rawpasswd=? where email=?", [hashedPw, reset_password, email], (err, result) => {
+                if (err) {
+                    return res.status(500).render('forgot_password', {msg: "Unable to reset"});
+                } else {
+                    return res.status(400).render('login', {msg: "New password updated, try login"});
+                }
+            });
+        });
+    } catch (err) {
+        console.error(er);
+    }
+}
 
 // function for menu database selection
 exports.fetchAllMenu = async (req, res, next) => {
@@ -275,7 +309,10 @@ exports.submitOrder = async (req, res) => {
             const set_new_quantity = current_quantity - food_quantity;
             db.query("update Menus set quantity=? where mname=?", [set_new_quantity, food_name], (err, update) => {
                 if (err) {
-                    return res.status(500).json({success: false, msg: "Failed to set new quantity into menu database"});
+                    return res.status(500).json({
+                        success: false,
+                        msg: "Failed to set new quantity into menu database"
+                    });
                 }
 
                 db.query("insert into Ordered (oid, uid, ubatch, uname, mname, odate, quantity, price) values (?, ?, (select batch from Users where uid=?), (select username from Users where uid=?), ?, ?, ?, ?);",

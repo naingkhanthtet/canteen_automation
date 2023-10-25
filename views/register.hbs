@@ -20,14 +20,14 @@
 <!-- Button to trigger the login form modal -->
 
 <div class="container justify-content-center rounded-5 shadow"
-     style="background-color: white; width:500px; height:550px;">
+     style="background-color: white; width:500px; height:600px;">
 
     <form class="mt-5" action="/auth/register" method="post">
-        <div class="for_header justify-content-center d-flex align-content-center ">
-            <h5 class="modal-title text-center fs-3 mt-4 mb-3 " id="loginModalLabel">Register Account</h5>
+        <div class="for_header justify-content-center d-flex align-content-center mt-auto">
+            <h5 class="modal-title text-center fs-3 mt-5 mb-3" id="loginModalLabel">Register Account</h5>
         </div>
         {{#if msg}}
-            <p>{{msg}}</p>
+            <p style="text-align: center; margin-top: 0.5rem;">{{msg}}</p>
         {{/if}}
         <div class="for_body m-4">
             <!-- Your register form goes here -->
@@ -70,27 +70,25 @@
                                style="background-color: rgba(218, 216, 215, 0.69);  border-color: rgb(255, 216, 169); ">
                     </div>
                 </div>
-                <div class="lable_account text-center m-3 mt-3">
+                <div class="lable_account text-center m-3 mt-5">
                     <span class="">Already registered?</span>
                     <a href="/login" class=" text-danger">Login</a>
                 </div>
-                <div class="footer justify-content-center d-flex mt-3">
-                    <a href="/login">
-                        <div style="margin-right: 30px; ">
-                            <button type="button" class="button_ho shadow rounded-5" data-bs-dismiss="modal"
-                                    style="background-color:  red; width:120px; height:40px; border:1px solid red; color: white;">
-                                Cancel
-                            </button>
-                        </div>
-                    </a>
-                    <div style="margin-left: 30px; ">
-                        <button type="submit" class="button_ho shadow rounded-5"
-                                style="background-color: green; width:120px; height:40px ; border:1px solid green; color: white;">
-                            Register
-                        </button>
-                    </div>
-                </div>
             </form>
+            <div class="footer justify-content-center d-flex align-content-center mb-5 mt-5">
+                <div style="margin-right: 30px; ">
+                    <button type="button" class="button_ho shadow rounded-5" data-bs-dismiss="modal"
+                            style="background-color:  red; width:120px; height:40px; border:1px solid red; color: white;">
+                        Cancel
+                    </button>
+                </div>
+                <div style="margin-left: 30px; ">
+                    <button type="submit" class="button_ho shadow rounded-5"
+                            style="background-color: green; width:120px; height:40px ; border:1px solid green; color: white;">
+                        Register
+                    </button>
+                </div>
+            </div>
         </div>
     </form>
 </div>

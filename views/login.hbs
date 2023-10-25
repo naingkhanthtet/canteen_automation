@@ -16,17 +16,10 @@
 </head>
 <body style="background-color:  rgb(255, 216, 169)">
 
-{{#if msg}}
-    <h4 style="text-align: center; margin-top: 5rem;">{{msg}}, Login now</h4>
-{{/if}}
 
 <div class="container justify-content-center rounded-5 shadow"
      style="background-color: white; width:500px; height:550px;">
     <form class="mt-5" action="/auth/login" method="post">
-        <!-- close button -->
-        <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn-close btn btn-dark" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div> -->
         <div class="for_header justify-content-center d-flex align-content-center mt-auto">
             <h5 class="modal-title text-center fs-3 mt-5 mb-3" id="loginModalLabel">Login Account</h5>
         </div>
@@ -42,10 +35,13 @@
                 <div class="mb-4" style="color: grey">
                     <input type="password" name="password" class="form-control rounded-5 shadow" id="floatingPassword"
                            placeholder="Password..." style="border-color: rgb(255, 216, 169); ">
+                    {{#if msg}}
+                        <p style="text-align: center; margin-top: 0.5rem;">{{msg}} <a href="/auth/resetPasswordPage">Forgot password?</a></p>
+                    {{/if}}
                 </div>
                 <div class="lable_account text-center m-3 mt-5">
                     <span class="">Do not have account?</span>
-                    <a href="/register" class=" text-danger">Register</a>
+                    <a href="/register" class="text-danger">Register</a>
                 </div>
             </form>
             <div class="footer justify-content-center d-flex align-content-center mb-5 mt-5">
