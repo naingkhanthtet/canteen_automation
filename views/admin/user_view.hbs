@@ -65,7 +65,6 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Batch</th>
                                 <th scope="col">User Name</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Phone Number</th>
                                 <th scope="col">Role</th>
                                 <th scope="col"></th>
@@ -79,25 +78,23 @@
                                     <td>{{this.email}}</td>
                                     <td>{{this.batch}}</td>
                                     <td>{{this.username}}</td>
-                                    <td style="max-width: 300px; word-wrap: break-word;">{{this.rawpasswd}}</td>
                                     <td>{{this.phone}}</td>
                                     <td>{{this.urole}}</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn px-2">
+                                        <a href="/editUser/{{this.uid}}" class="btn px-2">
                                             <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
-                                        </button>
+                                        </a>
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" class="btn px-2">
+                                        <a href="/deleteUser/{{this.uid}}" class="btn px-2">
                                             <i class="fa-solid fa-trash" style="color: #000000;"></i>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             {{/each}}
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
